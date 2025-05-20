@@ -30,10 +30,16 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
+import { ViewArticlesComponent } from './articles/view-articles/view-articles.component';
+import { AddArticlesComponent } from './articles/add-articles/add-articles.component';
+import { EditArticleComponent } from './articles/edit-article/edit-article.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ViewArticlesComponent,
+    AddArticlesComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,
