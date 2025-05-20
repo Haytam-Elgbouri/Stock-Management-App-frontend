@@ -7,7 +7,7 @@
     <mat-divider></mat-divider>
 
     <button mat-fab aria-label="Example icon button with a delete icon" (click)="addUser()" class="add-icon">
-        <mat-icon>person_add</mat-icon>
+        <mat-icon>add_box</mat-icon>
     </button>
     <mat-form-field>
         <mat-label>Filtre</mat-label>
@@ -71,7 +71,10 @@
         </tr>
     </table>
     
-    <mat-paginator [pageSizeOptions]="[5, 10, 15]"  showFirstLastButtons aria-label="Select page of results">
-    </mat-paginator>
-    <router-outlet></router-outlet>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements"
+                 class="paginator">
+  </mat-paginator>
+    <!-- <router-outlet></router-outlet> -->
 </div>

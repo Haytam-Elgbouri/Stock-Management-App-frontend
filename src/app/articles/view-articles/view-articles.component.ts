@@ -27,11 +27,11 @@ export class ViewArticlesComponent implements OnInit{
   @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
-    this.articlesService.getUsers()
+    this.articlesService.getArticles()
       .subscribe({
         next : data => {
           this.users = data
-                   
+
           this.dataSource = new MatTableDataSource(this.users);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
@@ -54,29 +54,29 @@ export class ViewArticlesComponent implements OnInit{
       data: { name: `${element.firstName} ${element.lastName}` }
     });
   
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.authService.deleteUser(element.id).subscribe({
-    //       next: () => {
-    //         this.snackbarService.show(`${element.firstName} ${element.lastName}: utilisateur supprimé avec succès`);
-    //         this.ngOnInit();
-    //       },
-    //       error: err => {
-    //         const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
-    //         this.snackbarService.show("Erreur: " + errorMessage);
-    //       }
-    //     });
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.articlesService.deleteArticle(element.id).subscribe({
+          next: () => {
+            this.snackbarService.show(`${element.reference} : article supprimé avec succès`);
+            this.ngOnInit();
+          },
+          error: err => {
+            const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
+            this.snackbarService.show("Erreur: " + errorMessage);
+          }
+        });
+      }
+    });
   }
   
 
   onEdit(element: any) {
-    this.router.navigateByUrl(`/user/add-article/${element.id}`)
+    this.router.navigateByUrl(`/user/edit-article/${element.id}`)
   }
 
   addUser() {
-    this.router.navigateByUrl("/user/add-articles")
+    this.router.navigateByUrl("/user/add-article")
   }
 
 }

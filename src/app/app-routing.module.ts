@@ -10,7 +10,7 @@ const routes: Routes = [
   {path : "user", component : HomeComponent,
     children : [
       {path : "view-articles", component : ViewArticlesComponent},
-      {path : "edit-article", component : EditArticleComponent},
+      {path : "edit-article/:id", component : EditArticleComponent},
       {path : "add-article", component : AddArticlesComponent},
     ]
   }

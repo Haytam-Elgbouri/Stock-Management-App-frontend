@@ -10,9 +10,13 @@ export class ArticlesService {
 
   constructor(private http : HttpClient) { }
 
-  public getUsers(): Observable<any> {
-  return this.http.get<any>(`${environment.backendHost}/api/articles`, {
-  });
+  public getArticles(): Observable<any> {
+    return this.http.get<any>(`${environment.backendHost}/api/articles`, {
+    });
+  }
+  public deleteArticle(id : string): Observable<String> {
+    return this.http.delete<String>(`${environment.backendHost}/api/articles/${id}`, {
+    }); 
   }
 
 }
