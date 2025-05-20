@@ -18,5 +18,17 @@ export class ArticlesService {
     return this.http.delete<String>(`${environment.backendHost}/api/articles/${id}`, {
     }); 
   }
+   public addArticle(formData: any): Observable<any> {
+    return this.http.post<any>(`${environment.backendHost}/api/articles`, formData, {
+    });
+  }
+  public getArticle(id : string): Observable<any> {
+    return this.http.get<any>(`${environment.backendHost}/api/articles/${id}`, {
+    });
+  }
+  public updateArticle(formData: any, id : string): Observable<any> {
+    return this.http.put<any>(`${environment.backendHost}/api/articles/${id}`, formData, {
+    });
+  }
 
 }

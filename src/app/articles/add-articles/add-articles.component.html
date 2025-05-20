@@ -1,1 +1,58 @@
-<p>add-articles works!</p>
+<div class="container" [formGroup]="addUserForm">
+    <!-- {{addUserForm.value | json}} -->
+    <div class="title">
+        <mat-icon>person_add</mat-icon>
+        <h2>Créer un compte utilisateur</h2>
+    </div>
+    <mat-divider></mat-divider>
+   
+    <button mat-fab aria-label="Example icon button with a delete icon" class="back-icon" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <div class="user-info">
+        <div class="left-div">
+            <mat-form-field appearance="outline">
+                <mat-label>reference</mat-label>
+                <input matInput formControlName="reference" type="text">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>designation</mat-label>
+                <input matInput formControlName="designation" type="text">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>family</mat-label>
+                <mat-select formControlName="family">
+                    <mat-option value="0">ACCESSORY</mat-option>
+                    <mat-option value="1">BARRE</mat-option>
+                    <mat-option value="2">PIECE</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="right-div">
+            <mat-form-field appearance="outline">
+                <mat-label>type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option value="ml">ml</mat-option>
+                    <mat-option value="unit">unit</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>prixUnitaireHT</mat-label>
+                <input matInput formControlName="prixUnitaireHT" type="text">
+            </mat-form-field>
+
+
+        </div>
+
+    </div>
+    <div class="actions">
+        <button class="button" mat-raised-button (click)="confirm()" [disabled]="addUserForm.invalid">
+            Ajouter
+            <mat-icon iconPositionEnd>done</mat-icon>
+        </button>
+    </div>
+</div>
