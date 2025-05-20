@@ -43,8 +43,8 @@ export class AddArticlesComponent implements OnInit{
 
     this.articlesService.addArticle(formData).subscribe({
       next: () => {
-        this.snackbarService.show('Utilisateur enregistré avec succès');
-        this.router.navigateByUrl('/user/admin/dashboard');
+        this.snackbarService.show('Article enregistré avec succès');
+        this.router.navigateByUrl('/user/view-articles');
       },
       error: err => {
         const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
