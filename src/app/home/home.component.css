@@ -1,0 +1,154 @@
+mat-drawer {
+  width: 20%;
+}
+
+mat-drawer-container {
+  /* height: 100%; */
+  background-color: var(--primary-color);
+  margin-top: 64px; 
+  height: calc(100vh - 64px);
+}
+
+mat-toolbar {
+  background-color: var(--sidebar-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.logo {
+  width: auto;
+  height: auto;
+  max-height: 38px;
+  max-width: 193px;
+  padding-top: 3px;
+
+}
+
+.drawer {
+  width: 20%;
+  background-color: var(--sidebar-color);
+  height: 100%;
+  padding-top: 20px;
+  border-radius: 0;
+  display: flex;
+
+}
+
+.mat-list-item {
+  transition: background-color 0.3s ease;
+
+}
+
+.mat-nav-list {
+  width: 50%;
+}
+
+.active-link {
+  background-color: var(--secondary-color) !important;
+}
+
+.active-link mat-icon {
+  color: var(--sidebar-color) !important;
+}
+
+.active-link span {
+  color: var(--sidebar-color) !important;
+  font-weight: 600 !important;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+}
+
+.list-item mat-icon,
+mat-toolbar mat-icon {
+  color: white;
+  margin-right: 5px
+}
+
+.list-item span {
+  color: white;
+}
+
+.mat-mdc-nav-list .mat-mdc-list-item {
+  border-radius: 12px;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  width: 90%;
+  margin: 7px;
+}
+
+.item span {
+  transform: scale(0.9); 
+
+}
+
+.item:hover {
+  color: red;
+}
+
+.navbar-button {
+  margin: 10px;
+  color: var(--primary-color) !important;
+}
+
+.toolbar-button{
+  background-color: transparent !important;
+  color: var(--primary-color) !important;
+  border-radius: 0% !important;
+  font-size:medium;
+  /* width: 10%; */
+}
+
+.toolbar-button-username{
+  background-color: transparent !important;
+  color: var(--secondary-color) !important;
+  border-radius: 0% !important;
+  font-size:medium;
+}
+
+.toolbar-button mat-icon{
+  color: var(--primary-color) !important;
+}
+
+.toolbar-button-username mat-icon{
+  color: var(--secondary-color) !important;
+}
+.toolbar-button-username .profile-icon{
+  transform: scale(1.2);
+  margin-right: 10px;
+}
+
+::ng-deep .mat-mdc-menu-panel {
+  background-color: var(--sidebar-color) !important;
+}
+
+.menu-item , .menu-item mat-icon{
+  color: var(--primary-color) !important;
+}
+
+.menu-item {
+  font-size: xx-large !important;
+}
+.menu-item:hover{
+  background-color: var(--secondary-color) !important;
+  color: var(--sidebar-color) !important;
+}
+.menu-item:hover *{
+  background-color: var(--secondary-color) !important;
+  color: var(--sidebar-color) !important;
+}
+
+
+

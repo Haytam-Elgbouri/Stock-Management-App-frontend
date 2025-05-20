@@ -1,1 +1,203 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/* @import '@angular/material/prebuilt-themes/indigo-pink.css'; */
+
+:root {
+  /* --primary-color: #dbdbdb; */
+  /* --primary-color: #A6E1FA; */
+  --primary-color: #f5f7fa;
+  --sidebar-color: #161a2e ;
+  /* --sidebar-color: #161a2e; */
+  /* --primary-color: #014282; color bmce 1  */
+  --secondary-color: #04babd;  
+  /* --primary-color: #ffffff; color bmce 3  */
+  --mat-table-background-color: var(--primary-color);
+}
+
+
+
+html, body {
+  background-color: var(--sidebar-color);
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* body {
+} */
+
+* {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.content {
+  padding: 20px 90px;
+  height: auto;
+  transform: scale(0.83); 
+  transform-origin: top left; 
+  width: 115%; 
+  position: relative;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.suffix{
+  padding: 10px;
+  color: var(--sidebar-color);
+}
+
+
+/* prefix */
+.mat-mdc-form-field-flex{
+  align-items: center !important; 
+}
+
+.prefix{
+  margin-top: 10px;
+}
+
+mat-form-field{
+  margin: 10px;
+  width: 90%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+  
+.title{
+  display: flex;
+  align-items: center;
+}
+.title mat-icon{
+  margin-right: 15px;
+  transform: scale(1.3);
+  color: var(--sidebar-color);
+}
+
+/* mat-card-subtitle, mat-card-title{
+  padding: 10px;
+  margin: 10px;
+} */
+
+/* mat-card-actions{
+  display: flex;
+  justify-content: center;
+} */
+
+.button{
+  margin: 30px;
+  width: 200px;
+  background-color: var(--secondary-color) !important;
+  color: var(--sidebar-color) !important;
+}
+
+.button[disabled] {
+  background-color: #aaaaaa !important;
+  color: var(--primary-color) !important;
+  cursor: not-allowed !important;
+  pointer-events: auto !important;
+}
+
+.cancel-button{
+  margin: 30px;
+  width: 200px;
+  background-color: #b6b6b6 !important;
+  color: var(--sidebar-color) !important;
+}
+
+.left-div{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.right-div{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.details-ordre{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+mat-divider{
+  padding-bottom: 10px;
+}
+
+mat-label{
+  color: var(--sidebar-color);
+}
+
+.mat-mdc-radio-button.mat-mdc-radio-checked .mat-ripple-element {
+  background-color: var(--secondary-color) !important;
+}
+
+.mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__background::before {
+  background-color: var(--secondary-color) !important;
+  /* aura  */
+}
+
+.mat-mdc-radio-button
+  .mdc-radio
+  .mdc-radio__native-control:enabled:checked
+  + .mdc-radio__background
+  .mdc-radio__outer-circle {
+  border-color: var(--secondary-color) !important;
+  /* outline  */
+}
+
+.mat-mdc-radio-button .mdc-radio .mdc-radio__native-control:enabled + .mdc-radio__background .mdc-radio__inner-circle {
+  border-color: var(--secondary-color) !important;
+  /* inner circle  */
+}
+
+input{
+  color: var(--sidebar-color) !important;
+}
+
+
+/* .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: var(--sidebar-color) !important;
+} */
+
+/* .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__leading,.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__notch,.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: var(--sidebar-color) !important;
+} */
+
+/* .mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field .mdc-notched-outline__notch {
+  border-left: none;
+} */
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+  color: var(--sidebar-color);
+}
+/* .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: var(--sidebar-color);
+} */
+
+/* .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: #f44336;
+} */
+
+/* .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: var(--sidebar-color);
+} */
+.back-icon{
+  color: var(--sidebar-color) !important;
+  height: 50px !important;
+  width: 50px !important;
+  margin: 2% 0%;
+}  
+.paginator {
+    background-color: var(--primary-color) !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled){
+  background-color: transparent !important;
+}
