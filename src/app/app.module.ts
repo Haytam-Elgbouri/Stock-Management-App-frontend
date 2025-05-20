@@ -33,13 +33,23 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ViewArticlesComponent } from './articles/view-articles/view-articles.component';
 import { AddArticlesComponent } from './articles/add-articles/add-articles.component';
 import { EditArticleComponent } from './articles/edit-article/edit-article.component';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ViewArticlesComponent,
     AddArticlesComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +74,11 @@ import { EditArticleComponent } from './articles/edit-article/edit-article.compo
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
   ],
   providers: [],
   bootstrap: [AppComponent]
