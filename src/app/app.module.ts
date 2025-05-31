@@ -16,7 +16,7 @@ import { MatDivider, MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
@@ -72,6 +72,7 @@ import { ViewStockComponent } from './stock/view-stock/view-stock.component';
     MatRadioModule,
     TextFieldModule,
     MatSelectModule,
+    FormsModule,     
     MatNativeDateModule,
     MatDatepickerModule,
     MatSortModule,
