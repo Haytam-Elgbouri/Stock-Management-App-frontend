@@ -42,6 +42,10 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ViewBCsComponent } from './BCs/view-bcs/view-bcs.component';
+import { AddBCComponent } from './BCs/add-bc/add-bc.component';
+import { BcDetailsComponent } from './BCs/bc-details/bc-details.component';
+import { ViewStockComponent } from './stock/view-stock/view-stock.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +54,10 @@ import {
     AddArticlesComponent,
     EditArticleComponent,
     ConfirmDialogComponent,
+    ViewBCsComponent,
+    AddBCComponent,
+    BcDetailsComponent,
+    ViewStockComponent,
   ],
   imports: [
     BrowserModule,
