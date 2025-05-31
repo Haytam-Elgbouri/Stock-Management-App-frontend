@@ -14,7 +14,7 @@ export class ArticlesService {
     return this.http.get<any>(`${environment.backendHost}/api/articles`, {
     });
   }
-  public deleteArticle(id : string): Observable<String> {
+  public deleteArticle(id : number): Observable<String> {
     return this.http.delete<String>(`${environment.backendHost}/api/articles/${id}`, {
     }); 
   }
