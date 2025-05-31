@@ -5,6 +5,8 @@ import { ViewArticlesComponent } from './articles/view-articles/view-articles.co
 import { EditArticleComponent } from './articles/edit-article/edit-article.component';
 import { AddArticlesComponent } from './articles/add-articles/add-articles.component';
 import { ViewBCsComponent } from './BCs/view-bcs/view-bcs.component';
+import { BcDetailsComponent } from './BCs/bc-details/bc-details.component';
+import { AddBCComponent } from './BCs/add-bc/add-bc.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'user', pathMatch: 'full' },
@@ -14,6 +16,8 @@ const routes: Routes = [
       {path : "edit-article/:id", component : EditArticleComponent},
       {path : "add-article", component : AddArticlesComponent},
       {path : "view-bcs", component : ViewBCsComponent},
+      {path : "bc-details/:id", component : BcDetailsComponent},
+      {path : "add-bc", component : AddBCComponent},
     ]
   }
  

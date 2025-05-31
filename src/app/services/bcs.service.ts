@@ -14,7 +14,7 @@ export class BcsService {
     return this.http.get<any>(`${environment.backendHost}/api/bcs`);
   }
   public getBC(id:number):Observable<any>{
-    return this.http.get<any>(`${environment.backendHost}/api/bcs//${id}`)
+    return this.http.get<any>(`${environment.backendHost}/api/bcs/${id}`)
   }
   public addBC(formData:FormData):Observable<any>{
     return this.http.post<any>(`${environment.backendHost}/api/bcs`,formData);

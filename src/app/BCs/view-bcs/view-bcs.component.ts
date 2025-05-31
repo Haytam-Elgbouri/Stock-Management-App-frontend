@@ -16,7 +16,7 @@ import { BcsService } from '../../services/bcs.service';
 })
 export class ViewBCsComponent {
 
-  public displayedColumns = ['id','reference','date','supplierReference','prixTotalHT'];
+  public displayedColumns = ['id','reference','date','supplierReference','prixTotalHT','action'];
   public dataSource:any;
 
   public BCs : any;
@@ -49,10 +49,10 @@ export class ViewBCsComponent {
   }
 
   consultBC(element: any) {
-    this.router.navigateByUrl(`/user/edit-article/${element.id}`)
+    this.router.navigateByUrl(`/user/bc-details/${element.id}`)
   }
 
   addBC() {
-    this.router.navigateByUrl("/user/add-article")
+    this.router.navigateByUrl("/user/add-bc")
   }
 }
