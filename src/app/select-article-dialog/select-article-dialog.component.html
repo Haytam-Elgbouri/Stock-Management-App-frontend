@@ -1,0 +1,76 @@
+<h2 mat-dialog-title>Choisir un article</h2>
+
+<mat-dialog-content [formGroup]="articleForm">
+{{ articleForm.value | json }}
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <!-- Select Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+<!--         
+        <mat-radio-button formControlName="selected"
+          name="selectedArticle"
+          [value]="element.id"
+          [(ngModel)]="selectedArticleId">
+        </mat-radio-button> -->
+        <mat-radio-button
+          [value]="element.id"
+          [checked]="articleForm.get('selected')?.value === element.id"
+          (change)="onSelectArticle(element.id)">
+        </mat-radio-button>
+
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="reference">
+      <th mat-header-cell *matHeaderCellDef>Reference</th>
+      <td mat-cell *matCellDef="let element">{{element.reference}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="designation">
+      <th mat-header-cell *matHeaderCellDef>Designation</th>
+      <td mat-cell *matCellDef="let element">{{element.designation}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="family">
+      <th mat-header-cell *matHeaderCellDef>Family</th>
+      <td mat-cell *matCellDef="let element">{{element.family}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let element">{{element.type}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="prixUnitaireHT">
+      <th mat-header-cell *matHeaderCellDef>Prix U. HT</th>
+      <td mat-cell *matCellDef="let element">{{element.prixUnitaireHT}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <br>
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Quantité</mat-label>
+    <input matInput type="number" formControlName="quantity" min="1">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Couleur</mat-label>
+    <mat-select formControlName="color">
+      <mat-option *ngFor="let color of availableColors" [value]="color">{{ color }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="articleForm.invalid">
+    Ajouter
+  </button>
+</mat-dialog-actions>

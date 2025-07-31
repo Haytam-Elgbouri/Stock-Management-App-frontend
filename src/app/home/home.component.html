@@ -33,6 +33,12 @@
 <mat-drawer-container>
   <mat-drawer #myDrawer opened="true" mode="side" position="start" class="drawer">
     <mat-nav-list class="nav-list">
+          <a mat-list-item routerLink="/user/view-stock" routerLinkActive="active-link" class="item">
+            <div class="list-item">
+                <mat-icon>dashboard</mat-icon>
+                <span>Stock</span>
+            </div>
+          </a>
           <a mat-list-item routerLink="/user/view-articles" routerLinkActive="active-link" class="item">
             <div class="list-item">
                 <mat-icon>dashboard</mat-icon>
@@ -45,7 +51,7 @@
                 <span>BCs</span>
             </div>
           </a>
-          <a mat-list-item routerLink="/user/paiement-banque" routerLinkActive="active-link" class="item">
+          <!-- <a mat-list-item routerLink="/user/paiement-banque" routerLinkActive="active-link" class="item">
             <div class="list-item">
                 <mat-icon>account_balance</mat-icon>
                 <span>Paiement Banque</span>
@@ -54,17 +60,15 @@
           <a mat-list-item routerLink="/user/consultation" routerLinkActive="active-link" class="item">
             <div class="list-item">
                 <mat-icon>search</mat-icon>
-                <!-- <span>Consultation de ordres de paiment</span> -->
                 <span>Consultation</span>
             </div>
           </a>
           <a mat-list-item routerLink="/user/validation" routerLinkActive="active-link" class="item">
             <div class="list-item">
                 <mat-icon>check</mat-icon>
-                <!-- <span>Consultation de ordres de paiment</span> -->
                 <span>Validation</span>
             </div>
-          </a>
+          </a> -->
         </mat-nav-list>
       </mat-drawer>
     <mat-drawer-content>

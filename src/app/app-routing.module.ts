@@ -7,6 +7,7 @@ import { AddArticlesComponent } from './articles/add-articles/add-articles.compo
 import { ViewBCsComponent } from './BCs/view-bcs/view-bcs.component';
 import { BcDetailsComponent } from './BCs/bc-details/bc-details.component';
 import { AddBCComponent } from './BCs/add-bc/add-bc.component';
+import { ViewStockComponent } from './view-stock/view-stock.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'user', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
       {path : "view-bcs", component : ViewBCsComponent},
       {path : "bc-details/:id", component : BcDetailsComponent},
       {path : "add-bc", component : AddBCComponent},
+      {path : "view-stock", component : ViewStockComponent},
     ]
   }
  

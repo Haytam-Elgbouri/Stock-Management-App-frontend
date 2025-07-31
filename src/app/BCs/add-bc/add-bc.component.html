@@ -20,84 +20,22 @@
 
 
     <div class="table-container">
+        <button mat-raised-button color="accent" (click)="openAddArticleDialog()">Ajouter un article</button>
+
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-            <ng-container matColumnDef="validation">
-                <th mat-header-cell *matHeaderCellDef>
-                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
-                                [checked]="selection.hasValue() && isAllSelected()"
-                                [indeterminate]="selection.hasValue() && !isAllSelected()"
-                                [aria-label]="checkboxLabel()">
-                    </mat-checkbox>
-                </th>
-                <td mat-cell *matCellDef="let row">
-                    <mat-checkbox (click)="$event.stopPropagation()"
-                                (change)="$event ? selection.toggle(row) : null"
-                                [checked]="selection.isSelected(row)"
-                                [aria-label]="checkboxLabel(row)">
-                    </mat-checkbox>
-                </td>
-                </ng-container>
+        <ng-container matColumnDef="id"><th mat-header-cell *matHeaderCellDef>ID</th><td mat-cell *matCellDef="let row">{{ row.id }}</td></ng-container>
+        <ng-container matColumnDef="reference"><th mat-header-cell *matHeaderCellDef>Réf</th><td mat-cell *matCellDef="let row">{{ row.reference }}</td></ng-container>
+        <ng-container matColumnDef="designation"><th mat-header-cell *matHeaderCellDef>Désignation</th><td mat-cell *matCellDef="let row">{{ row.designation }}</td></ng-container>
+        <ng-container matColumnDef="family"><th mat-header-cell *matHeaderCellDef>Famille</th><td mat-cell *matCellDef="let row">{{ row.family }}</td></ng-container>
+        <ng-container matColumnDef="type"><th mat-header-cell *matHeaderCellDef>Type</th><td mat-cell *matCellDef="let row">{{ row.type }}</td></ng-container>
+        <ng-container matColumnDef="prixUnitaireHT"><th mat-header-cell *matHeaderCellDef>PU HT</th><td mat-cell *matCellDef="let row">{{ row.prixUnitaireHT }}</td></ng-container>
+        <ng-container matColumnDef="color"><th mat-header-cell *matHeaderCellDef>Couleur</th><td mat-cell *matCellDef="let row">{{ row.color }}</td></ng-container>
+        <ng-container matColumnDef="quantity"><th mat-header-cell *matHeaderCellDef>Quantité</th><td mat-cell *matCellDef="let row">{{ row.quantity }}</td></ng-container>
 
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let element"> {{element?.id}} </td>
-            </ng-container>
-           
-            <ng-container matColumnDef="reference">
-                <th mat-header-cell *matHeaderCellDef> Reference </th>
-                <td mat-cell *matCellDef="let element"> {{element?.reference}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="designation">
-                <th mat-header-cell *matHeaderCellDef> designation </th>
-                <td mat-cell *matCellDef="let element"> {{element?.designation}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="family">
-                <th mat-header-cell *matHeaderCellDef> family </th>
-                <td mat-cell *matCellDef="let element"> {{element?.family}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="type">
-                <th mat-header-cell *matHeaderCellDef> type </th>
-                <td mat-cell *matCellDef="let element"> {{element?.type}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="prixUnitaireHT">
-                <th mat-header-cell *matHeaderCellDef> prixUnitaireHT </th>
-                <td mat-cell *matCellDef="let element"> {{element?.prixUnitaireHT}} </td>
-            </ng-container>
-
-            <!-- Quantity Column -->
-            <ng-container matColumnDef="quantity">
-            <th mat-header-cell *matHeaderCellDef> Quantité </th>
-            <td mat-cell *matCellDef="let element">
-                <input type="number"
-                    [(ngModel)]="element.quantity"
-                    [disabled]="!selection.isSelected(element)"
-                    min="1"
-                    style="width: 80px;" />
-            </td>
-            </ng-container>
-
-            <!-- Color Column -->
-            <ng-container matColumnDef="color">
-            <th mat-header-cell *matHeaderCellDef> Couleur </th>
-            <td mat-cell *matCellDef="let element">
-                <mat-select
-                [(ngModel)]="element.color"
-                [disabled]="!selection.isSelected(element)">
-                <mat-option *ngFor="let c of colorOptions" [value]="c">
-                    {{ c }}
-                </mat-option>
-                </mat-select>
-            </td>
-            </ng-container>
-
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+
     </div>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
@@ -108,15 +46,6 @@
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 

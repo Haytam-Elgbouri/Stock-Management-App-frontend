@@ -46,6 +46,7 @@ import { ViewBCsComponent } from './BCs/view-bcs/view-bcs.component';
 import { AddBCComponent } from './BCs/add-bc/add-bc.component';
 import { BcDetailsComponent } from './BCs/bc-details/bc-details.component';
 import { ViewStockComponent } from './stock/view-stock/view-stock.component';
+import { SelectArticleDialogComponent } from './select-article-dialog/select-article-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,7 @@ import { ViewStockComponent } from './stock/view-stock/view-stock.component';
     AddBCComponent,
     BcDetailsComponent,
     ViewStockComponent,
+    SelectArticleDialogComponent,
   ],
   imports: [
     BrowserModule,
