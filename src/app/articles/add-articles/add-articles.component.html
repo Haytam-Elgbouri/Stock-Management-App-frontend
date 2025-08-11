@@ -26,7 +26,7 @@
                 <mat-select formControlName="family">
                     <mat-option value="0">ACCESSORY</mat-option>
                     <mat-option value="1">BARRE</mat-option>
-                    <mat-option value="2">PIECE</mat-option>
+                    <mat-option value="2">JOINT</mat-option>
                 </mat-select>
             </mat-form-field>
         </div>
@@ -40,6 +40,11 @@
                 </mat-select>
             </mat-form-field>
 
+            <mat-form-field appearance="outline" *ngIf="addUserForm.get('family')?.value == 1">
+                <mat-label>Longueur</mat-label>
+                <input matInput formControlName="longueur" type="number">
+            </mat-form-field>
+          
             <mat-form-field appearance="outline">
                 <mat-label>prixUnitaireHT</mat-label>
                 <input matInput formControlName="prixUnitaireHT" type="number">

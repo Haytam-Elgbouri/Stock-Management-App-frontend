@@ -39,9 +39,19 @@
             <td mat-cell *matCellDef="let element"> {{element.type}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="longueur">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> longueur </th>
+            <td mat-cell *matCellDef="let element"> {{element.longueur}} </td>
+        </ng-container>
+
         <ng-container matColumnDef="prixUnitaireHT">
             <th mat-header-cell mat-sort-header *matHeaderCellDef> prixUnitaireHT </th>
             <td mat-cell *matCellDef="let element"> {{element.prixUnitaireHT}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="prixTotalHT">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> prixTotalHT </th>
+            <td mat-cell *matCellDef="let element"> {{element.prixTotalHT}} </td>
         </ng-container>
 
 

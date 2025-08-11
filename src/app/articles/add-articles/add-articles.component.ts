@@ -27,9 +27,21 @@ export class AddArticlesComponent implements OnInit{
         designation : this.fb.control('', Validators.required),
         family : this.fb.control('', Validators.required),
         type : this.fb.control('', Validators.required),
+        longueur : this.fb.control('', Validators.required),
         prixUnitaireHT : this.fb.control('', Validators.required),
       }
     )
+    this.addUserForm.get('family')?.valueChanges.subscribe(value => {
+        const longueurControl = this.addUserForm.get('longueur');
+    if (value == 1) {
+      longueurControl?.setValidators([Validators.required]);
+    }
+    else {
+      longueurControl?.setValue(null);
+      longueurControl?.clearValidators();
+    }
+    longueurControl?.updateValueAndValidity();
+  });
   }
 
   confirm() {
@@ -38,8 +50,10 @@ export class AddArticlesComponent implements OnInit{
       designation : this.addUserForm.value.designation,
       family : this.addUserForm.value.family,
       type : this.addUserForm.value.type,
+      longueur : this.addUserForm.value.longueur,
       prixUnitaireHT : this.addUserForm.value.prixUnitaireHT,
   }
+  
 
     this.articlesService.addArticle(formData).subscribe({
       next: () => {

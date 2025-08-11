@@ -56,11 +56,23 @@ openAddArticleDialog(): void {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      this.addedArticles.push(result);
-      this.dataSource.data = this.addedArticles;
+      // Try to find an existing line with same article id AND color
+      const existingLine = this.addedArticles.find(a => a.id === result.id && a.color === result.color);
+
+      if (existingLine) {
+        // If found, increase quantity
+        existingLine.quantity += result.quantity;
+      } else {
+        // Otherwise add new line
+        this.addedArticles.push(result);
+      }
+
+      // Refresh table data source
+      this.dataSource.data = [...this.addedArticles];
     }
   });
 }
+
 
 
 confirm() {
@@ -68,7 +80,7 @@ confirm() {
     reference: this.bcForm.value.reference,
     supplierReference: this.bcForm.value.supplierReference,
     lignes: this.addedArticles.map(a => ({
-      article: { id: a.id },  // <-- wrap article id inside article object
+      article: { id: a.id },
       quantity: a.quantity,
       color: a.color
     }))
@@ -77,16 +89,24 @@ confirm() {
   this.bcsService.addBC(formData).subscribe({
     next: () => {
       this.snackbarService.show('Bon de commande enregistré avec succès');
-      this.ngOnInit();
+
+      // Reset form
+      this.bcForm.reset();
+
+      // Clear added articles and table
+      this.addedArticles = [];
+      this.dataSource.data = [];
+
+      if (this.paginator) this.paginator.firstPage();
+
     },
     error: err => {
       const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
       this.snackbarService.show("Erreur: " + errorMessage);
     }
   });
-
-  this.ngOnInit();
 }
+
 
 
 }
