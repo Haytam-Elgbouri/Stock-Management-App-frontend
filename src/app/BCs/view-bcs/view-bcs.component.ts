@@ -16,7 +16,7 @@ import { BcsService } from '../../services/bcs.service';
 })
 export class ViewBCsComponent {
 
-  public displayedColumns = ['id','reference','date','supplierReference','prixTotalHT','action'];
+  public displayedColumns = ['reference','date','supplierReference','prixTotalHT','action'];
   public dataSource:any;
 
   public BCs : any;

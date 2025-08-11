@@ -17,7 +17,7 @@ export class BcDetailsComponent implements OnInit{
   constructor(private router : Router, private bcsService : BcsService, private activatedRoute : ActivatedRoute, private snackbarService : SnackbarService){}
   public bcs!: any;
   public dataSource:any;
-  public displayedColumns = ['articleID','color','quantity'];
+  public displayedColumns = ['reference', 'designation', 'prixUnitaireHT','color','quantity'];
   private bcID!:number;
   public lines!:[];
   @ViewChild(MatPaginator) paginator! : MatPaginator;

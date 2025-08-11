@@ -16,7 +16,7 @@ import { ArticlesService } from '../../services/articles.service';
 })
 export class ViewArticlesComponent implements OnInit{
 
-  public displayedColumns = ["id", "reference", "designation", "family", "type", "prixUnitaireHT","action"];
+  public displayedColumns = ["reference", "designation", "family", "type", "prixUnitaireHT","action"];
  public dataSource : any;
 
   public users : any;

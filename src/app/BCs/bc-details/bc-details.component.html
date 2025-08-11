@@ -36,9 +36,19 @@
                 </div>
 
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-        <ng-container matColumnDef="articleID">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> articleID </th>
-            <td mat-cell *matCellDef="let element"> {{element.articleID}} </td>
+        <ng-container matColumnDef="reference">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> reference </th>
+            <td mat-cell *matCellDef="let element"> {{element.article.reference}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="designation">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> designation </th>
+            <td mat-cell *matCellDef="let element"> {{element.article.designation}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="prixUnitaireHT">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> prixUnitaireHT </th>
+            <td mat-cell *matCellDef="let element"> {{element.article.prixUnitaireHT}} </td>
         </ng-container>
 
         <ng-container matColumnDef="color">

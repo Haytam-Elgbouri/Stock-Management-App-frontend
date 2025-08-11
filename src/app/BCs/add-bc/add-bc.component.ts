@@ -64,17 +64,15 @@ openAddArticleDialog(): void {
 
 
 confirm() {
-
-
   const formData = {
-  reference: this.bcForm.value.reference,
-  supplierReference: this.bcForm.value.supplierReference,
-  lignes: this.addedArticles.map(a => ({
-    articleId: a.id,
-    quantity: a.quantity,
-    color: a.color
-  }))
-};
+    reference: this.bcForm.value.reference,
+    supplierReference: this.bcForm.value.supplierReference,
+    lignes: this.addedArticles.map(a => ({
+      article: { id: a.id },  // <-- wrap article id inside article object
+      quantity: a.quantity,
+      color: a.color
+    }))
+  };
 
   this.bcsService.addBC(formData).subscribe({
     next: () => {
@@ -86,7 +84,9 @@ confirm() {
       this.snackbarService.show("Erreur: " + errorMessage);
     }
   });
+
   this.ngOnInit();
 }
+
 
 }

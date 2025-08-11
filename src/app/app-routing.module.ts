@@ -7,19 +7,20 @@ import { AddArticlesComponent } from './articles/add-articles/add-articles.compo
 import { ViewBCsComponent } from './BCs/view-bcs/view-bcs.component';
 import { BcDetailsComponent } from './BCs/bc-details/bc-details.component';
 import { AddBCComponent } from './BCs/add-bc/add-bc.component';
-import { ViewStockComponent } from './view-stock/view-stock.component';
+import { ViewStockComponent } from './stock/view-stock/view-stock.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'user', pathMatch: 'full' },
+  {path: '', redirectTo: 'user/view-stock', pathMatch: 'full' },
   {path : "user", component : HomeComponent,
     children : [
+      // { path: '', redirectTo: '/user/view-stock', pathMatch: 'full' },
+      {path : "view-stock", component : ViewStockComponent},
       {path : "view-articles", component : ViewArticlesComponent},
       {path : "edit-article/:id", component : EditArticleComponent},
       {path : "add-article", component : AddArticlesComponent},
       {path : "view-bcs", component : ViewBCsComponent},
       {path : "bc-details/:id", component : BcDetailsComponent},
       {path : "add-bc", component : AddBCComponent},
-      {path : "view-stock", component : ViewStockComponent},
     ]
   }
  

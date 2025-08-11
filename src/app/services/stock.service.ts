@@ -11,7 +11,7 @@ export class StockService {
   constructor(private http : HttpClient) { }
 
   
-  public getBCs():Observable<any>{
+  public getStock():Observable<any>{
     return this.http.get<any>(`${environment.backendHost}/api/stock`);
   }
 }
