@@ -50,28 +50,28 @@ export class AddBCComponent implements OnInit{
 
 openAddArticleDialog(): void {
   const dialogRef = this.dialog.open(SelectArticleDialogComponent, {
-    width: '600px',
-    data: { articles: this.articles } // all available articles
+    width: '70vw',    // 70% of the viewport width
+    height: '70vh',   // 70% of the viewport height (optional)
+    maxWidth: '95vw', // prevent overflow on small screens
+    maxHeight: '95vh',
+    data: { articles: this.articles }
   });
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      // Try to find an existing line with same article id AND color
       const existingLine = this.addedArticles.find(a => a.id === result.id && a.color === result.color);
 
       if (existingLine) {
-        // If found, increase quantity
         existingLine.quantity += result.quantity;
       } else {
-        // Otherwise add new line
         this.addedArticles.push(result);
       }
 
-      // Refresh table data source
       this.dataSource.data = [...this.addedArticles];
     }
   });
 }
+
 
 
 

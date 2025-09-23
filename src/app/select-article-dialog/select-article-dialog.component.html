@@ -1,7 +1,11 @@
 <h2 mat-dialog-title>Choisir un article</h2>
 
 <mat-dialog-content [formGroup]="articleForm">
-{{ articleForm.value | json }}
+<!-- {{ articleForm.value | json }} -->
+  <mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
     <!-- Select Column -->
@@ -50,6 +54,10 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">"{{input.value}}" n'existe pas</td>
+  </tr>
   </table>
 
   <br>

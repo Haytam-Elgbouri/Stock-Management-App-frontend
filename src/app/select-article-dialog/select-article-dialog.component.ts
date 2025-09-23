@@ -72,5 +72,8 @@ onSubmit(): void {
   onSelectArticle(articleId: number) {
   this.articleForm.get('selected')?.setValue(articleId);
 }
-
+applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

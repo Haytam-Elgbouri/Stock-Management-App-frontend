@@ -9,7 +9,7 @@
   
     <mat-form-field>
         <mat-label>Filtre</mat-label>
-        <input class="filter-input" matInput (keyup)="applyFilter($event)" placeholder="Ex. utilisateur1" #input>
+        <input class="filter-input" matInput (keyup)="applyFilter($event)" placeholder="Ex. article1" #input>
         <span class="suffix" matSuffix>     
             <mat-icon class="search-icon">search</mat-icon>
         </span>
@@ -28,27 +28,27 @@
         </ng-container>
 
         <ng-container matColumnDef="family">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> family </th>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Famille </th>
             <td mat-cell *matCellDef="let element"> {{element.article.family}} </td>
         </ng-container>
 
         <ng-container matColumnDef="type">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> type </th>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Type </th>
             <td mat-cell *matCellDef="let element"> {{element.article.type}} </td>
         </ng-container>
 
         <ng-container matColumnDef="color">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> color </th>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Couleur </th>
             <td mat-cell *matCellDef="let element"> {{element.color}} </td>
         </ng-container>
 
         <ng-container matColumnDef="prixUnitaireHT">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> prixUnitaireHT </th>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Prix Unitaire HT </th>
             <td mat-cell *matCellDef="let element"> {{element.article.prixUnitaireHT}} </td>
         </ng-container>
  
         <ng-container matColumnDef="quantity">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> quantity </th>
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Quantité </th>
             <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
         </ng-container>
 

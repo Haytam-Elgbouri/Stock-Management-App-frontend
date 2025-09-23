@@ -19,6 +19,9 @@ export class BcsService {
   public addBC(formData:any):Observable<any>{
     return this.http.post<any>(`${environment.backendHost}/api/bcs`,formData);
   }
+  public deliver(formData:any):Observable<any>{
+    return this.http.post<any>(`${environment.backendHost}/api/bcs/deliver`,formData);
+  }
   public updateBC(formData:FormData):Observable<any>{
     return this.http.put<any>(`${environment.backendHost}/api/bcs`,formData);
   }

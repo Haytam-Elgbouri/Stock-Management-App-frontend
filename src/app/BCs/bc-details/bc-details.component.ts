@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SnackbarService } from '../../services/snackbar.service';
+import { elementAt } from 'rxjs';
 
 @Component({
   selector: 'app-bc-details',
@@ -17,7 +18,7 @@ export class BcDetailsComponent implements OnInit{
   constructor(private router : Router, private bcsService : BcsService, private activatedRoute : ActivatedRoute, private snackbarService : SnackbarService){}
   public bcs!: any;
   public dataSource:any;
-  public displayedColumns = ['reference', 'designation', 'prixUnitaireHT', 'prixTotalLigne','color','quantity','remaining','delivered'];
+  public displayedColumns = ['reference', 'designation', 'prixUnitaireHT', 'prixTotalLigne','color','quantity','remaining','delivered','deliver'];
   private bcID!:number;
   public lines!:[];
   @ViewChild(MatPaginator) paginator! : MatPaginator;
@@ -38,6 +39,26 @@ export class BcDetailsComponent implements OnInit{
           this.snackbarService.show("Erreur: " + errorMessage);
       }
     })
+  }
+
+  deliver(element: any){
+    const formData = {
+      id: element.id,
+      deliveredQuantity: element.deliveredQuantity
+    };
+    console.log(formData);
+    
+    this.bcsService.deliver(formData).subscribe({
+      next : () =>{
+        this.snackbarService.show("Delivered");
+        this.ngOnInit();
+      },
+      error : err =>{
+        const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
+        this.snackbarService.show("Erreur: " + errorMessage);
+      }
+    })
+
   }
 
 
