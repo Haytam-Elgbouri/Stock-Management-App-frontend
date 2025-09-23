@@ -22,8 +22,8 @@ export class BcsService {
   public updateBC(formData:FormData):Observable<any>{
     return this.http.put<any>(`${environment.backendHost}/api/bcs`,formData);
   }
-  public validateBC(id:number):Observable<any>{
-    return this.http.put<any>(`${environment.backendHost}/api/bcs/${id}/validate`,{});
-  }
+  // public validateBC(id:number):Observable<any>{
+  //   return this.http.put<any>(`${environment.backendHost}/api/bcs/${id}/validate`,{});
+  // }
 
 }
