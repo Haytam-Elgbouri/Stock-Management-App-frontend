@@ -1,3 +1,12 @@
 .deliveredQuantity{
     width: 70%;
 }
+.icons-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.delete-icon{
+    margin: 3% 2%;
+    
+}
