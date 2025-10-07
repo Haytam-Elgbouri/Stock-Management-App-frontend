@@ -35,8 +35,9 @@
             <mat-form-field appearance="outline">
                 <mat-label>type</mat-label>
                 <mat-select formControlName="type">
-                    <mat-option value="ml">ml</mat-option>
-                    <mat-option value="unit">unit</mat-option>
+                    <mat-option value="ml" *ngIf="addUserForm.get('family')?.value != 0">ML</mat-option>
+                    <mat-option value="unit" *ngIf="addUserForm.get('family')?.value == 0">Unite</mat-option>
+                    <mat-option value="unit" *ngIf="addUserForm.get('family')?.value == 0">Pair</mat-option>
                 </mat-select>
             </mat-form-field>
 
