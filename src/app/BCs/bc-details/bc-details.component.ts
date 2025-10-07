@@ -21,7 +21,7 @@ export class BcDetailsComponent implements OnInit{
   public displayedColumns = ['reference', 'designation', 'prixUnitaireHT', 'prixTotalLigne','color','quantity','remaining','delivered'];
   public blsDataSource:any;
   public blsBisplayedColumns = ['reference', 'action'];
-  private bcID!:number;
+  public bcID!:number;
   public lines!:[];
   public bls!:[];
   @ViewChild(MatPaginator) bcPaginator! : MatPaginator;

@@ -1,1 +1,96 @@
-<p>bl-details works!</p>
+<div class="container">
+    <!-- {{paiementDetails | json}} -->
+
+    <div class="full-title">
+        <button mat-fab aria-label="Example icon button with a delete icon" class="back-icon" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div class="title">
+            <mat-icon>chat</mat-icon>
+            <h2>Consulter un ordre de paiement client</h2>
+        </div>
+    </div>
+    <!-- <mat-divider></mat-divider> -->
+    
+
+    <div class="payment-details-card">
+        <!-- <mat-card appearance="outlined">
+            <mat-card-content> -->
+                <div>
+                    <div>
+                        <span class="key">Reference: </span>
+                        <span class="value">{{bl?.reference}}</span>
+                    </div>
+                    <div>
+                        <span class="key">Date: </span>
+                        <span class="value">{{bl?.date}}</span>
+                    </div>
+                </div>
+
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="reference">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Reference </th>
+            <td mat-cell *matCellDef="let element"> {{element.article.reference}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="designation">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Designation </th>
+            <td mat-cell *matCellDef="let element"> {{element.article.designation}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="color">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Couleur </th>
+            <td mat-cell *matCellDef="let element"> {{element.color}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Quantite Totale </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="remainingBefore">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Reliquat Avant </th>
+            <td mat-cell *matCellDef="let element"> {{element.remainingBefore}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="delivered">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Livres </th>
+            <td mat-cell *matCellDef="let element"> {{element.delivered}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="remainingAfter">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Reste </th>
+            <td mat-cell *matCellDef="let element"> {{element.remainingAfter}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="deliver">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef> deliver </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field appearance="outline" class="deliveredQuantity">
+            <input matInput type="number" [(ngModel)]="element.deliveredQuantity">
+
+            <button mat-icon-button matSuffix color="primary" (click)="deliver(element)">
+                <mat-icon>add</mat-icon>
+            </button>
+            </mat-form-field>
+        </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <!-- <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">"{{input.value}}" n'existe pas</td>
+        </tr> -->
+    </table>
+        
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Select page of periodic elements"
+                    class="paginator">
+    </mat-paginator>
+                
+
+    </div>
+
+</div>
