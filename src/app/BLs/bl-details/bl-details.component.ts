@@ -5,6 +5,7 @@ import { SnackbarService } from '../../services/snackbar.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-bl-details',
@@ -13,9 +14,7 @@ import { MatSort } from '@angular/material/sort';
   styleUrl: './bl-details.component.css'
 })
 export class BlDetailsComponent implements OnInit{
-goBack() {
-throw new Error('Method not implemented.');
-}
+
 
   private blID! : number;
   public bl : any;
@@ -27,7 +26,8 @@ throw new Error('Method not implemented.');
 
   constructor(private blService : BlsService,
               private activatedRoute : ActivatedRoute,
-              private snackbarService : SnackbarService
+              private snackbarService : SnackbarService,
+              private location : Location
   ){}
 
   ngOnInit(): void {
@@ -65,6 +65,10 @@ throw new Error('Method not implemented.');
       }
     })
 
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

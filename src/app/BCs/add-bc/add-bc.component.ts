@@ -79,7 +79,7 @@ confirm() {
   const formData = {
     reference: this.bcForm.value.reference,
     supplierReference: this.bcForm.value.supplierReference,
-    lignes: this.addedArticles.map(a => ({
+    lines: this.addedArticles.map(a => ({
       article: { id: a.id },
       quantity: a.quantity,
       color: a.color
