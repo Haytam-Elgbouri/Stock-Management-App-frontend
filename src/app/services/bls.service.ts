@@ -21,4 +21,8 @@ export class BlsService {
   public deliver(formData:any):Observable<any>{
     return this.http.post<any>(`${environment.backendHost}/api/bls/deliver`,formData);
   }
+
+  public validate(id:number):Observable<any>{
+    return this.http.put<any>(`${environment.backendHost}/api/bls/validate/${id}`,{});
+  }
 }

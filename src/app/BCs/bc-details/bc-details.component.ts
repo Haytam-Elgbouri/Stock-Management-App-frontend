@@ -29,11 +29,12 @@ export class BcDetailsComponent implements OnInit{
   public dataSource:any;
   public displayedColumns = ['reference', 'designation', 'prixUnitaireHT', 'prixTotalLigne','color','quantity','remaining','delivered'];
   public blsDataSource:any;
-  public blsBisplayedColumns = ['reference', 'action'];
+  public blsBisplayedColumns = ['reference', 'date', 'status', 'action'];
   public bcID!:number;
   public blID!:number;
   public lines!:[];
   public bls!:[];
+  public blsLength! : number;
 
   @ViewChild(MatPaginator) bcPaginator! : MatPaginator;
   @ViewChild(MatSort) bcSort!: MatSort;
@@ -48,6 +49,8 @@ export class BcDetailsComponent implements OnInit{
           this.bcs = data
           this.lines = this.bcs.lines;
           this.bls = this.bcs.bls;
+          this.blsLength = this.bls.length;
+          
           this.dataSource = new MatTableDataSource(this.lines);
           this.dataSource.paginator = this.bcPaginator;
           this.dataSource.sort = this.bcSort;

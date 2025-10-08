@@ -67,6 +67,18 @@ export class BlDetailsComponent implements OnInit{
 
   }
 
+  validate(){
+    this.blService.validate(this.blID).subscribe({
+      next : () =>{
+        this.snackbarService.show("BL valide");
+      },
+      error : err =>{
+        const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
+        this.snackbarService.show("Erreur: " + errorMessage);
+      }
+    })
+  }
+
   goBack() {
     this.location.back();
   }

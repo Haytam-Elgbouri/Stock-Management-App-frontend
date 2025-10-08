@@ -66,13 +66,14 @@
         <ng-container matColumnDef="deliver">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> deliver </th>
         <td mat-cell *matCellDef="let element">
-            <mat-form-field appearance="outline" class="deliveredQuantity">
-            <input matInput type="number" [(ngModel)]="element.deliveredQuantity">
+            <mat-form-field appearance="outline" class="deliveredQuantity" *ngIf="!bl.isValidated">
+                <input matInput type="number" [(ngModel)]="element.deliveredQuantity">
 
-            <button mat-icon-button matSuffix color="primary" (click)="deliver(element)">
-                <mat-icon>add</mat-icon>
-            </button>
+                <button mat-icon-button matSuffix color="primary" (click)="deliver(element)">
+                    <mat-icon>add</mat-icon>
+                </button>
             </mat-form-field>
+            <p *ngIf="bl.isValidated">Deja Valide</p>
         </td>
         </ng-container>
 
@@ -90,6 +91,7 @@
                     class="paginator">
     </mat-paginator>
                 
+    <button mat-button class="button" (click)="validate()" *ngIf="!bl.isValidated">Valider</button>
 
     </div>
 

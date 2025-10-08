@@ -7,9 +7,11 @@
   /* --primary-color: #A6E1FA; */
   --primary-color: #f5f7fa;
   --sidebar-color: #161a2e ;
+  /* --sidebar-color: #373A40 ; scalux grey */
   /* --sidebar-color: #161a2e; */
   /* --primary-color: #014282; color bmce 1  */
   --secondary-color: #04babd;  
+  /* --secondary-color: #DC5F00;  scalux orange */
   /* --primary-color: #ffffff; color bmce 3  */
   --mat-table-background-color: var(--primary-color);
 }
