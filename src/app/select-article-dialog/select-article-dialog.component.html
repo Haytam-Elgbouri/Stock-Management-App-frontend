@@ -61,19 +61,20 @@
   </table>
 
   <br>
+  <div class="qteCouleur">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Quantité</mat-label>
+      <input matInput type="number" formControlName="quantity" min="1">
+    </mat-form-field>
 
-  <mat-form-field appearance="outline" style="width: 100%;">
-    <mat-label>Quantité</mat-label>
-    <input matInput type="number" formControlName="quantity" min="1">
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" style="width: 100%;">
-    <mat-label>Couleur</mat-label>
-    <mat-select formControlName="color">
-      <mat-option *ngFor="let color of availableColors" [value]="color">{{ color }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Couleur</mat-label>
+      <mat-select formControlName="color">
+        <mat-option *ngFor="let color of availableColors" [value]="color">{{ color }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">

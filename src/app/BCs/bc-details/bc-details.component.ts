@@ -27,7 +27,7 @@ export class BcDetailsComponent implements OnInit{
             ){}
   public bcs!: any;
   public dataSource:any;
-  public displayedColumns = ['reference', 'designation', 'prixUnitaireHT', 'prixTotalLigne','color','quantity','remaining','delivered'];
+  public displayedColumns = ['reference', 'designation', 'prixUnitaireHT','quantity', 'prixTotalLigne','color','delivered','remaining'];
   public blsDataSource:any;
   public blsBisplayedColumns = ['reference', 'date', 'status', 'action'];
   public bcID!:number;

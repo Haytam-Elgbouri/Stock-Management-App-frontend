@@ -28,7 +28,8 @@ export class AddArticlesComponent implements OnInit{
         family : this.fb.control('', Validators.required),
         type : this.fb.control('', Validators.required),
         longueur : this.fb.control('', Validators.required),
-        prixUnitaireHT : this.fb.control('', Validators.required),
+        prixUnitaireHT : this.fb.control(''),
+        prixTotalHT : this.fb.control(''),
       }
     )
     this.addUserForm.get('family')?.valueChanges.subscribe(value => {
@@ -52,6 +53,7 @@ export class AddArticlesComponent implements OnInit{
       type : this.addUserForm.value.type,
       longueur : this.addUserForm.value.longueur,
       prixUnitaireHT : this.addUserForm.value.prixUnitaireHT,
+      prixTotalHT : this.addUserForm.value.prixTotalHT,
   }
   
 

@@ -3,16 +3,17 @@
 /* @import '@angular/material/prebuilt-themes/indigo-pink.css'; */
 
 :root {
-  /* --primary-color: #dbdbdb; */
-  /* --primary-color: #A6E1FA; */
+
   --primary-color: #f5f7fa;
+
   --sidebar-color: #161a2e ;
-  /* --sidebar-color: #373A40 ; scalux grey */
-  /* --sidebar-color: #161a2e; */
-  /* --primary-color: #014282; color bmce 1  */
+  /* --sidebar-color: #373A40 ;  */
+  /* scalux grey */
+
   --secondary-color: #04babd;  
-  /* --secondary-color: #DC5F00;  scalux orange */
-  /* --primary-color: #ffffff; color bmce 3  */
+  /* --secondary-color: #DC5F00;   */
+  /* scalux orange */
+
   --mat-table-background-color: var(--primary-color);
 }
 

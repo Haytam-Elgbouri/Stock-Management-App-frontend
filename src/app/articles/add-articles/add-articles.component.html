@@ -2,7 +2,7 @@
     <!-- {{addUserForm.value | json}} -->
     <div class="title">
         <mat-icon>add_to_photos</mat-icon>
-        <h2>Add Articles</h2>
+        <h2>Ajouter un article</h2>
     </div>
     <mat-divider></mat-divider>
    
@@ -13,19 +13,19 @@
     <div class="user-info">
         <div class="left-div">
             <mat-form-field appearance="outline">
-                <mat-label>reference</mat-label>
+                <mat-label>Reference</mat-label>
                 <input matInput formControlName="reference" type="text">
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-label>designation</mat-label>
+                <mat-label>Designation</mat-label>
                 <input matInput formControlName="designation" type="text">
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-                <mat-label>family</mat-label>
+                <mat-label>Famille</mat-label>
                 <mat-select formControlName="family">
-                    <mat-option value="0">ACCESSORY</mat-option>
-                    <mat-option value="1">BARRE</mat-option>
+                    <mat-option value="0">ACCESSOIRE</mat-option>
+                    <mat-option value="1">PROFILE</mat-option>
                     <mat-option value="2">JOINT</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -33,10 +33,10 @@
 
         <div class="right-div">
             <mat-form-field appearance="outline">
-                <mat-label>type</mat-label>
+                <mat-label>Type</mat-label>
                 <mat-select formControlName="type">
                     <mat-option value="ml" *ngIf="addUserForm.get('family')?.value != 0">ML</mat-option>
-                    <mat-option value="unit" *ngIf="addUserForm.get('family')?.value == 0">Unite</mat-option>
+                    <mat-option value="unit" *ngIf="addUserForm.get('family')?.value == 0">Unité</mat-option>
                     <mat-option value="unit" *ngIf="addUserForm.get('family')?.value == 0">Pair</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -46,9 +46,14 @@
                 <input matInput formControlName="longueur" type="number">
             </mat-form-field>
           
-            <mat-form-field appearance="outline">
-                <mat-label>prixUnitaireHT</mat-label>
+            <mat-form-field appearance="outline" *ngIf="addUserForm.get('family')?.value == 1">
+                <mat-label>Prix Unitaire HT</mat-label>
                 <input matInput formControlName="prixUnitaireHT" type="number">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" *ngIf="addUserForm.get('family')?.value != 1">
+                <mat-label>Prix Unitaire HT</mat-label>
+                <input matInput formControlName="prixTotalHT" type="number">
             </mat-form-field>
 
 

@@ -7,7 +7,7 @@
         </button>
         <div class="title">
             <mat-icon>chat</mat-icon>
-            <h2>Consulter un ordre de paiement client</h2>
+            <h2>Bon de Reception {{bl?.reference}} {{bl?.date}}</h2>
         </div>
     </div>
     <!-- <mat-divider></mat-divider> -->
@@ -16,7 +16,7 @@
     <div class="payment-details-card">
         <!-- <mat-card appearance="outlined">
             <mat-card-content> -->
-                <div>
+                <!-- <div>
                     <div>
                         <span class="key">Reference: </span>
                         <span class="value">{{bl?.reference}}</span>
@@ -25,7 +25,7 @@
                         <span class="key">Date: </span>
                         <span class="value">{{bl?.date}}</span>
                     </div>
-                </div>
+                </div> -->
 
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
         <ng-container matColumnDef="reference">
