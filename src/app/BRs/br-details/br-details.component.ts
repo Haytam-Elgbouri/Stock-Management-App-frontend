@@ -47,25 +47,32 @@ export class BrDetailsComponent implements OnInit{
     })
   }
 
-  deliver(element: any){
-    const formData = {
-      id: element.id,
-      receivedQuantity: element.receivedQuantity
-    };
-    console.log(formData);
-    
-    this.brService.deliver(formData).subscribe({
-      next : () =>{
-        this.snackbarService.show("Delivered");
-        this.ngOnInit();
-      },
-      error : err =>{
-        const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
-        this.snackbarService.show("Erreur: " + errorMessage);
-      }
-    })
+deliver() {
+  if (!this.lines || this.lines.length === 0) return;
 
-  }
+  // Prepare the payload for the whole BR
+  const formData = {
+    brId: this.brID,
+    lines: this.lines.map((line: any) => ({
+      id: line.id,
+      receivedQuantity: line.receivedQuantity || 0 // default 0 if undefined
+    }))
+  };
+
+  console.log('Delivering BR:', formData);
+
+  this.brService.receive(formData).subscribe({
+    next: () => {
+      this.snackbarService.show("BR Delivered");
+      this.ngOnInit(); // Refresh the data
+    },
+    error: err => {
+      const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
+      this.snackbarService.show("Erreur: " + errorMessage);
+    }
+  });
+}
+
 
   validate(){
     this.brService.validate(this.brID).subscribe({

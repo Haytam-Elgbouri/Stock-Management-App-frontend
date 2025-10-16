@@ -18,8 +18,8 @@ export class BrsService {
     return this.http.get<any>(`${environment.backendHost}/api/brs/${id}`);
   }
 
-  public deliver(formData:any):Observable<any>{
-    return this.http.post<any>(`${environment.backendHost}/api/brs/deliver`,formData);
+  public receive(formData:any):Observable<any>{
+    return this.http.post<any>(`${environment.backendHost}/api/brs/receive`,formData);
   }
 
   public validate(id:number):Observable<any>{
