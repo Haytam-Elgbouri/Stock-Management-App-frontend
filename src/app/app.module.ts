@@ -47,9 +47,9 @@ import { AddBCComponent } from './BCs/add-bc/add-bc.component';
 import { BcDetailsComponent } from './BCs/bc-details/bc-details.component';
 import { ViewStockComponent } from './stock/view-stock/view-stock.component';
 import { SelectArticleDialogComponent } from './select-article-dialog/select-article-dialog.component';
-import { ViewBlsComponent } from './BLs/view-bls/view-bls.component';
-import { BlDetailsComponent } from './BLs/bl-details/bl-details.component';
-import { AddBlDialogComponent } from './add-bl-dialog/add-bl-dialog.component';
+import { ViewBrsComponent } from './BRs/view-brs/view-brs.component';
+import { BrDetailsComponent } from './BRs/br-details/br-details.component';
+import { AddBrDialogComponent } from './add-br-dialog/add-br-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,9 +63,9 @@ import { AddBlDialogComponent } from './add-bl-dialog/add-bl-dialog.component';
     BcDetailsComponent,
     ViewStockComponent,
     SelectArticleDialogComponent,
-    ViewBlsComponent,
-    BlDetailsComponent,
-    AddBlDialogComponent,
+    ViewBrsComponent,
+    BrDetailsComponent,
+    AddBrDialogComponent,
   ],
   imports: [
     BrowserModule,

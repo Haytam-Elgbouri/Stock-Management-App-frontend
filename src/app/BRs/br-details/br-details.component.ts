@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BlsService } from '../../services/bls.service';
+import { BrsService } from '../../services/brs.service';
 import { ActivatedRoute } from '@angular/router';
 import { SnackbarService } from '../../services/snackbar.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,34 +8,34 @@ import { MatSort } from '@angular/material/sort';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-bl-details',
+  selector: 'app-br-details',
   standalone: false,
-  templateUrl: './bl-details.component.html',
-  styleUrl: './bl-details.component.css'
+  templateUrl: './br-details.component.html',
+  styleUrl: './br-details.component.css'
 })
-export class BlDetailsComponent implements OnInit{
+export class BrDetailsComponent implements OnInit{
 
 
-  private blID! : number;
-  public bl : any;
+  private brID! : number;
+  public br : any;
   public lines! : [];
   public dataSource : any; 
-  public displayedColumns = ['reference', 'designation','color','quantity','remainingBefore','delivered', 'remainingAfter', 'deliver'];
+  public displayedColumns = ['reference', 'designation','color','quantity','remainingBefore','received', 'remainingAfter', 'deliver'];
   @ViewChild(MatPaginator) Paginator! : MatPaginator;
   @ViewChild(MatSort) Sort!: MatSort;
 
-  constructor(private blService : BlsService,
+  constructor(private brService : BrsService,
               private activatedRoute : ActivatedRoute,
               private snackbarService : SnackbarService,
               private location : Location
   ){}
 
   ngOnInit(): void {
-    this.blID = this.activatedRoute.snapshot.params['id'];
-    this.blService.getBl(this.blID).subscribe({
+    this.brID = this.activatedRoute.snapshot.params['id'];
+    this.brService.getBr(this.brID).subscribe({
       next : data =>{
-        this.bl = data;
-        this.lines = this.bl.lines;
+        this.br = data;
+        this.lines = this.br.lines;
         this.dataSource = new MatTableDataSource(this.lines);
         this.dataSource.paginator = this.Paginator;
         this.dataSource.sort = this.Sort;
@@ -50,11 +50,11 @@ export class BlDetailsComponent implements OnInit{
   deliver(element: any){
     const formData = {
       id: element.id,
-      deliveredQuantity: element.deliveredQuantity
+      receivedQuantity: element.receivedQuantity
     };
     console.log(formData);
     
-    this.blService.deliver(formData).subscribe({
+    this.brService.deliver(formData).subscribe({
       next : () =>{
         this.snackbarService.show("Delivered");
         this.ngOnInit();
@@ -68,9 +68,9 @@ export class BlDetailsComponent implements OnInit{
   }
 
   validate(){
-    this.blService.validate(this.blID).subscribe({
+    this.brService.validate(this.brID).subscribe({
       next : () =>{
-        this.snackbarService.show("BL valide");
+        this.snackbarService.show("BR valide");
       },
       error : err =>{
         const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";

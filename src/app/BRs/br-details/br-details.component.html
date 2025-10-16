@@ -7,7 +7,7 @@
         </button>
         <div class="title">
             <mat-icon>chat</mat-icon>
-            <h2>Bon de Reception {{bl?.reference}} {{bl?.date}}</h2>
+            <h2>Bon de Reception {{br?.reference}} {{br?.date}}</h2>
         </div>
     </div>
     <!-- <mat-divider></mat-divider> -->
@@ -19,11 +19,11 @@
                 <!-- <div>
                     <div>
                         <span class="key">Reference: </span>
-                        <span class="value">{{bl?.reference}}</span>
+                        <span class="value">{{br?.reference}}</span>
                     </div>
                     <div>
                         <span class="key">Date: </span>
-                        <span class="value">{{bl?.date}}</span>
+                        <span class="value">{{br?.date}}</span>
                     </div>
                 </div> -->
 
@@ -53,9 +53,9 @@
             <td mat-cell *matCellDef="let element"> {{element.remainingBefore}} </td>
         </ng-container>
     
-        <ng-container matColumnDef="delivered">
-            <th mat-header-cell mat-sort-header *matHeaderCellDef> Livres </th>
-            <td mat-cell *matCellDef="let element"> {{element.delivered}} </td>
+        <ng-container matColumnDef="received">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Reçues </th>
+            <td mat-cell *matCellDef="let element"> {{element.received}} </td>
         </ng-container>
     
         <ng-container matColumnDef="remainingAfter">
@@ -66,14 +66,14 @@
         <ng-container matColumnDef="deliver">
         <th mat-header-cell mat-sort-header *matHeaderCellDef> deliver </th>
         <td mat-cell *matCellDef="let element">
-            <mat-form-field appearance="outline" class="deliveredQuantity" *ngIf="!bl.isValidated">
-                <input matInput type="number" [(ngModel)]="element.deliveredQuantity">
+            <mat-form-field appearance="outline" class="receivedQuantity" *ngIf="!br.isValidated">
+                <input matInput type="number" [(ngModel)]="element.receivedQuantity">
 
                 <button mat-icon-button matSuffix color="primary" (click)="deliver(element)">
                     <mat-icon>add</mat-icon>
                 </button>
             </mat-form-field>
-            <p *ngIf="bl.isValidated">Deja Valide</p>
+            <p *ngIf="br.isValidated">Deja Valide</p>
         </td>
         </ng-container>
 
@@ -91,7 +91,7 @@
                     class="paginator">
     </mat-paginator>
                 
-    <button mat-button class="button" (click)="validate()" *ngIf="!bl.isValidated">Valider</button>
+    <button mat-button class="button" (click)="validate()" *ngIf="!br.isValidated">Valider</button>
 
     </div>
 

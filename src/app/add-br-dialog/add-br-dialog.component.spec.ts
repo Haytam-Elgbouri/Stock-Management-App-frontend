@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewBlsComponent } from './view-bls.component';
+import { AddBrDialogComponent } from './add-br-dialog.component';
 
-describe('ViewBlsComponent', () => {
-  let component: ViewBlsComponent;
-  let fixture: ComponentFixture<ViewBlsComponent>;
+describe('AddBrDialogComponent', () => {
+  let component: AddBrDialogComponent;
+  let fixture: ComponentFixture<AddBrDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ViewBlsComponent]
+      declarations: [AddBrDialogComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ViewBlsComponent);
+    fixture = TestBed.createComponent(AddBrDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

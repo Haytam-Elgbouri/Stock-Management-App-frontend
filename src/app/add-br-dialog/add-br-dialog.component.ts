@@ -2,16 +2,16 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-add-bl-dialog',
+  selector: 'app-add-br-dialog',
   standalone: false,
-  templateUrl: './add-bl-dialog.component.html',
-  styleUrl: './add-bl-dialog.component.css'
+  templateUrl: './add-br-dialog.component.html',
+  styleUrl: './add-br-dialog.component.css'
 })
-export class AddBlDialogComponent {
+export class AddBrDialogComponent {
  reference: string = '';
 
   constructor(
-    public dialogRef: MatDialogRef<AddBlDialogComponent>
+    public dialogRef: MatDialogRef<AddBrDialogComponent>
   ) {}
 
   onCancel(): void {

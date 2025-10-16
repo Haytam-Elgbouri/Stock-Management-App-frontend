@@ -8,8 +8,8 @@ import { ViewBCsComponent } from './BCs/view-bcs/view-bcs.component';
 import { BcDetailsComponent } from './BCs/bc-details/bc-details.component';
 import { AddBCComponent } from './BCs/add-bc/add-bc.component';
 import { ViewStockComponent } from './stock/view-stock/view-stock.component';
-import { ViewBlsComponent } from './BLs/view-bls/view-bls.component';
-import { BlDetailsComponent } from './BLs/bl-details/bl-details.component';
+import { ViewBrsComponent } from './BRs/view-brs/view-brs.component';
+import { BrDetailsComponent } from './BRs/br-details/br-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'user/view-stock', pathMatch: 'full' },
@@ -23,8 +23,8 @@ const routes: Routes = [
       {path : "view-bcs", component : ViewBCsComponent},
       {path : "bc-details/:id", component : BcDetailsComponent},
       {path : "add-bc", component : AddBCComponent},
-      {path : "view-bls", component : ViewBlsComponent},
-      {path : "bl-details/:id", component : BlDetailsComponent},
+      {path : "view-brs", component : ViewBrsComponent},
+      {path : "br-details/:id", component : BrDetailsComponent},
     ]
   }
  
