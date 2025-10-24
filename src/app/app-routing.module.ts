@@ -10,6 +10,8 @@ import { AddBCComponent } from './BCs/add-bc/add-bc.component';
 import { ViewStockComponent } from './stock/view-stock/view-stock.component';
 import { ViewBrsComponent } from './BRs/view-brs/view-brs.component';
 import { BrDetailsComponent } from './BRs/br-details/br-details.component';
+import { AddColorComponent } from './colors/add-color/add-color.component';
+import { ViewColorsComponent } from './colors/view-colors/view-colors.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'user/view-stock', pathMatch: 'full' },
@@ -25,6 +27,8 @@ const routes: Routes = [
       {path : "add-bc", component : AddBCComponent},
       {path : "view-brs", component : ViewBrsComponent},
       {path : "br-details/:id", component : BrDetailsComponent},
+      {path : "add-color", component : AddColorComponent},
+      {path : "view-colors", component : ViewColorsComponent},
     ]
   }
  
