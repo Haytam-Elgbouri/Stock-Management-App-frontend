@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Ajouter une couleur et un prix</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Couleur</mat-label>
+    <mat-select formControlName="colorId">
+      <mat-option *ngFor="let color of data.colors" [value]="color.id">{{ color.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-full" *ngIf="isBarreFamily">
+    <mat-label>Prix Unitaire HT</mat-label>
+    <input matInput type="number" formControlName="prixUnitaireHT">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-full" *ngIf="!isBarreFamily">
+    <mat-label>Prix Total HT</mat-label>
+    <input matInput type="number" formControlName="prixTotalHT">
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="confirm()" [disabled]="form.invalid">Confirmer</button>
+</mat-dialog-actions>

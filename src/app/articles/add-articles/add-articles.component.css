@@ -4,3 +4,8 @@
     align-items: flex-end;
 }
 
+.color-row{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
