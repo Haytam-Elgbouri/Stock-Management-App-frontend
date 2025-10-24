@@ -50,8 +50,8 @@ import { SelectArticleDialogComponent } from './select-article-dialog/select-art
 import { ViewBrsComponent } from './BRs/view-brs/view-brs.component';
 import { BrDetailsComponent } from './BRs/br-details/br-details.component';
 import { AddBrDialogComponent } from './add-br-dialog/add-br-dialog.component';
-import { AddColorComponent } from './colors/add-color/add-color.component';
 import { ViewColorsComponent } from './colors/view-colors/view-colors.component';
+import { AddColorDialogComponent } from './colors/add-color-dialog/add-color-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,8 +68,8 @@ import { ViewColorsComponent } from './colors/view-colors/view-colors.component'
     ViewBrsComponent,
     BrDetailsComponent,
     AddBrDialogComponent,
-    AddColorComponent,
     ViewColorsComponent,
+    AddColorDialogComponent,
   ],
   imports: [
     BrowserModule,

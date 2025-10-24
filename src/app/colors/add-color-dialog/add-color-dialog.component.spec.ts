@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddColorComponent } from './add-color.component';
+import { AddColorDialogComponent } from './add-color-dialog.component';
 
-describe('AddColorComponent', () => {
-  let component: AddColorComponent;
-  let fixture: ComponentFixture<AddColorComponent>;
+describe('AddColorDialogComponent', () => {
+  let component: AddColorDialogComponent;
+  let fixture: ComponentFixture<AddColorDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AddColorComponent]
+      declarations: [AddColorDialogComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddColorComponent);
+    fixture = TestBed.createComponent(AddColorDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

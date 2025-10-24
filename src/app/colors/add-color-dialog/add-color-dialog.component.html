@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Ajouter une couleur</h2>
+
+<mat-dialog-content>
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Nom de la couleur</mat-label>
+    <input matInput [(ngModel)]="colorName" placeholder="Ex: Brut, Noir, Naturel..." />
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Annuler</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Ajouter</button>
+</mat-dialog-actions>

@@ -17,5 +17,9 @@ export class ColorService {
   public viewColors():Observable<any>{
     return this.http.get<any>(`${environment.backendHost}/api/colors`);
   }
+ 
+  public deleteColor(id:number):Observable<any>{
+    return this.http.delete<any>(`${environment.backendHost}/api/colors/${id}`);
+  }
 
 }

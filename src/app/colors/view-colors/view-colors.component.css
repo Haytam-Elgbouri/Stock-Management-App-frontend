@@ -1,0 +1,15 @@
+.add-icon{
+    margin: 3% 0%;
+}
+
+.delete-icon{
+    margin: 3% 2%;
+    
+}
+
+button{
+    color: #161a2e;
+    height: 50px;
+    width: 50px;
+    box-shadow: none;
+}
