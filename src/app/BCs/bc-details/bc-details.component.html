@@ -34,6 +34,9 @@
                         <span class="value">{{bcs?.prixTotalHT}}</span>
                     </div>
                 </div>
+<button mat-raised-button color="primary" (click)="downloadBC()">
+  Télécharger le BC (PDF)
+</button>
 
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
             <ng-container matColumnDef="reference">

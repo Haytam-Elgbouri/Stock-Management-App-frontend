@@ -9,6 +9,9 @@ import { elementAt } from 'rxjs';
 import { BrsService } from '../../services/brs.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddBrDialogComponent } from '../../add-br-dialog/add-br-dialog.component';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
 
 @Component({
   selector: 'app-bc-details',
@@ -118,4 +121,81 @@ export class BcDetailsComponent implements OnInit{
       }
     });
   }
+
+
+
+
+async downloadBC() {
+  const doc = new jsPDF();
+  const logoUrl = 'logo-white2.png';
+  const date = this.bcs?.date || '';
+  const reference = this.bcs?.reference || '';
+
+  const getBase64ImageFromURL = (url: string): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.setAttribute('crossOrigin', 'anonymous');
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx?.drawImage(img, 0, 0);
+        resolve(canvas.toDataURL('image/png'));
+      };
+      img.onerror = (error) => reject(error);
+      img.src = url;
+    });
+  };
+
+  const logoBase64 = await getBase64ImageFromURL(logoUrl).catch(() => null);
+
+  if (logoBase64) {
+    doc.addImage(logoBase64, 'PNG', 10, 10, 30, 30); // (x, y, width, height)
+  }
+
+  doc.setFontSize(10);
+  doc.text(`Casablanca, le ${date}`, 140, 20);
+
+  doc.setFontSize(16);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`BON DE COMMANDE ${reference}`, 10, 60);
+
+  const tableData = this.lines.map((line: any) => {
+    const isBarre = line.article.family === 'BARRE';
+    return [
+      line.article.reference || '',
+      line.article.designation || '',
+      line.quantity || '',
+      isBarre ? (line.article.longueur || '') : '-',
+      line.color?.name || '',
+    ];
+  });
+
+  autoTable(doc, {
+    head: [['Référence', 'Désignation', 'Quantité', 'Longueur', 'Couleur']],
+    body: tableData,
+    startY: 70,
+    theme: 'grid',
+    headStyles: { fillColor: [242, 242, 242], textColor: 0 },
+    styles: { fontSize: 10, halign: 'center' },
+  });
+
+  const footerText = `Siege Maga. 186 Bd Chefchaouni Q. I. Bernoussi CASABLANCA. Tel: +212 522 351447
+E-mail: scaluxsarl@gmail.com - RC. N° 560169 - IF. N° 53219907 - ICE: 003148791000039 - CNSS: 5063436`;
+
+  const pageHeight = doc.internal.pageSize.height;
+  doc.setTextColor(255, 140, 0); // Orange
+  doc.setFontSize(9);
+  doc.text(footerText, doc.internal.pageSize.width / 2, pageHeight - 20, {
+    align: 'center',
+  });
+
+  doc.save(`Bon_de_Commande_${reference}.pdf`);
+}
+
+
+
+
+  
 }
