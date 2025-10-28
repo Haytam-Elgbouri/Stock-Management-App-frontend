@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Article } from '../../models/articles.model';
 import { ArticlesService } from '../../services/articles.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { ColorService } from '../../services/color.service';
 
 @Component({
   selector: 'app-select-article-dialog',
@@ -12,8 +13,8 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrl: './select-article-dialog.component.css'
 })
 export class SelectArticleDialogComponent implements OnInit {
-articleForm: FormGroup;
-  availableColors: string[] = ['Brut', 'Noir', 'Givre hors standard', 'Naturel'];
+  articleForm: FormGroup;
+  availableColors!: any;
   articles: any[] = [];
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = ['select', 'reference', 'designation', 'family', 'type', 'prixUnitaireHT'];
@@ -23,11 +24,12 @@ articleForm: FormGroup;
   constructor(
     private fb: FormBuilder,
     private articlesService: ArticlesService,
+    private colorService : ColorService,
     public dialogRef: MatDialogRef<SelectArticleDialogComponent>
   ) {
     this.articleForm = this.fb.group({
       quantity: [1, [Validators.required, Validators.min(1)]],
-      color: ['Brut', Validators.required],
+      color: [Validators.required],
       selected: ['', Validators.required]
     });
 
@@ -45,6 +47,15 @@ ngOnInit(): void {
       alert("Erreur lors du chargement des articles.");
     }
   });
+  this.colorService.getColors().subscribe({
+    next : data =>{
+      this.availableColors = data;
+    },
+    error : err =>{
+      console.error("Erreur de chargement des couleurs", err);
+      alert("Erreur lors du chargement des couleurs.");
+    }
+  })
 }
 
 

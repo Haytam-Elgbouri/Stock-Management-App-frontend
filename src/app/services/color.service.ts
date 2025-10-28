@@ -14,7 +14,7 @@ export class ColorService {
     return this.http.post<any>(`${environment.backendHost}/api/colors`, formData);
   }
   
-  public viewColors():Observable<any>{
+  public getColors():Observable<any>{
     return this.http.get<any>(`${environment.backendHost}/api/colors`);
   }
  

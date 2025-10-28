@@ -31,7 +31,6 @@ export class AddBCComponent implements OnInit{
 
   constructor(private fb : FormBuilder ,
               private bcsService : BcsService,
-              private articlesService : ArticlesService,
               private snackbarService : SnackbarService,
               private dialog: MatDialog){}
 
@@ -58,18 +57,20 @@ openAddArticleDialog(): void {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    if (result) {
-      const existingLine = this.addedArticles.find(a => a.id === result.id && a.color === result.color);
+  if (result) {
+    const existingLine = this.addedArticles.find(
+      a => a.id === result.id && a.color === result.color
+    );
 
-      if (existingLine) {
-        existingLine.quantity += result.quantity;
-      } else {
-        this.addedArticles.push(result);
-      }
-
-      this.dataSource.data = [...this.addedArticles];
+    if (existingLine) {
+      existingLine.quantity += result.quantity;
+    } else {
+      this.addedArticles.push(result);
     }
-  });
+
+    this.dataSource.data = [...this.addedArticles];
+  }
+});
 }
 
 
@@ -82,7 +83,7 @@ confirm() {
     lines: this.addedArticles.map(a => ({
       article: { id: a.id },
       quantity: a.quantity,
-      color: a.color
+      color: { id: a.color } // ⬅️ Changed from a.color to { id: a.color }
     }))
   };
 

@@ -38,7 +38,7 @@ export class AddArticlesComponent implements OnInit {
     });
 
     // Load existing colors
-    this.colorService.viewColors().subscribe({
+    this.colorService.getColors().subscribe({
       next: (data) => (this.colors = data),
       error: (err) => {
         const errorMessage = err?.error?.message || 'Erreur lors du chargement des couleurs';

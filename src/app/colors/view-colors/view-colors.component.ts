@@ -28,7 +28,7 @@ export class ViewColorsComponent implements OnInit{
   
   
   ngOnInit(): void {
-    this.colorService.viewColors().subscribe({
+    this.colorService.getColors().subscribe({
       next : data =>{
         this.colors = data;
         
