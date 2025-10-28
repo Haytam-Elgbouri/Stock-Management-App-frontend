@@ -14,7 +14,7 @@ import { ColorService } from '../../services/color.service';
 })
 export class SelectArticleDialogComponent implements OnInit {
   articleForm: FormGroup;
-  availableColors!: any;
+  availableColors: any[] = []; // ⬅️ Colors for selected article
   articles: any[] = [];
   dataSource: MatTableDataSource<any>;
   displayedColumns: string[] = ['select', 'reference', 'designation', 'family', 'type', 'prixUnitaireHT'];
@@ -24,66 +24,69 @@ export class SelectArticleDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private articlesService: ArticlesService,
-    private colorService : ColorService,
+    // Remove colorService - not needed anymore
     public dialogRef: MatDialogRef<SelectArticleDialogComponent>
   ) {
     this.articleForm = this.fb.group({
       quantity: [1, [Validators.required, Validators.min(1)]],
-      color: [Validators.required],
+      color: ['', Validators.required], // ⬅️ Added back validator
       selected: ['', Validators.required]
     });
 
     this.dataSource = new MatTableDataSource<any>();
   }
-ngOnInit(): void {
-  this.articlesService.getArticles().subscribe({
-    next: (data) => {
-      this.articles = data;
-      this.dataSource.data = this.articles; // ⬅️ Make sure it's set here
-      console.log('Articles loaded:', this.articles); // for debugging
-    },
-    error: (err) => {
-      console.error("Erreur de chargement des articles", err);
-      alert("Erreur lors du chargement des articles.");
+
+  ngOnInit(): void {
+    this.articlesService.getArticles().subscribe({
+      next: (data) => {
+        this.articles = data;
+        this.dataSource.data = this.articles;
+        console.log('Articles loaded:', this.articles);
+      },
+      error: (err) => {
+        console.error("Erreur de chargement des articles", err);
+        alert("Erreur lors du chargement des articles.");
+      }
+    });
+  }
+
+  onSelectArticle(articleId: number) {
+    this.articleForm.get('selected')?.setValue(articleId);
+    
+    // ⬅️ Load colors for selected article
+    const selectedArticle = this.articles.find(a => a.id === articleId);
+    if (selectedArticle && selectedArticle.colorPrices) {
+      this.availableColors = selectedArticle.colorPrices.map((cp: any) => ({
+        id: cp.colorId,
+        name: cp.colorName
+      }));
+      
+      // Reset color selection when article changes
+      this.articleForm.get('color')?.setValue('');
     }
-  });
-  this.colorService.getColors().subscribe({
-    next : data =>{
-      this.availableColors = data;
-    },
-    error : err =>{
-      console.error("Erreur de chargement des couleurs", err);
-      alert("Erreur lors du chargement des couleurs.");
-    }
-  })
-}
+  }
 
+  onSubmit(): void {
+    if (this.articleForm.invalid) return;
 
-onSubmit(): void {
-  if (this.articleForm.invalid) return;
+    const selectedArticleId = this.articleForm.value.selected;
+    const selectedArticle = this.articles.find(a => a.id === selectedArticleId);
+    if (!selectedArticle) return;
 
-  const selectedArticleId = this.articleForm.value.selected;
-  const selectedArticle = this.articles.find(a => a.id === selectedArticleId);
-  if (!selectedArticle) return;
+    const result = {
+      ...selectedArticle,
+      quantity: this.articleForm.value.quantity,
+      color: this.articleForm.value.color
+    };
 
-  const result = {
-    ...selectedArticle,
-    quantity: this.articleForm.value.quantity,
-    color: this.articleForm.value.color
-  };
-
-  this.dialogRef.close(result);
-}
-
+    this.dialogRef.close(result);
+  }
 
   onCancel(): void {
     this.dialogRef.close();
   }
 
-  onSelectArticle(articleId: number) {
-  this.articleForm.get('selected')?.setValue(articleId);
-}
-applyFilter(event: Event) {
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }

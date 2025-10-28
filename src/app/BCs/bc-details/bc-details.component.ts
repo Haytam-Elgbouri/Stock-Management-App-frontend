@@ -66,26 +66,25 @@ export class BcDetailsComponent implements OnInit{
     })
   }
 
-  // deliver(element: any){
-  //   const formData = {
-  //     id: element.id,
-  //     receivedQuantity: element.receivedQuantity
-  //   };
-  //   console.log(formData);
+  // ⬇️ ADD THESE TWO HELPER METHODS
+  getColorPrice(element: any): number {
+    // Find the colorPrice that matches the element's color.id
+    const colorPrice = element.article.colorPrices?.find(
+      (cp: any) => cp.colorId === element.color.id
+    );
     
-  //   this.bcsService.deliver(formData).subscribe({
-  //     next : () =>{
-  //       this.snackbarService.show("Delivered");
-  //       this.ngOnInit();
-  //     },
-  //     error : err =>{
-  //       const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
-  //       this.snackbarService.show("Erreur: " + errorMessage);
-  //     }
-  //   })
+    return colorPrice?.prixTotalHT || 0;
+  }
 
-  // }
-
+  getColorTotalPrice(element: any): number {
+    // Find the colorPrice that matches the element's color.id
+    const colorPrice = element.article.colorPrices?.find(
+      (cp: any) => cp.colorId === element.color.id
+    );
+    
+    return colorPrice?.prixTotalHT || 0;
+  }
+  // ⬆️ END OF NEW METHODS
 
   goBack() {
     this.router.navigateByUrl('/user/view-bcs');
@@ -95,28 +94,28 @@ export class BcDetailsComponent implements OnInit{
     this.router.navigateByUrl(`/user/br-details/${element.id}`)
   }
 
-addBR() {
-  const dialogRef = this.dialog.open(AddBrDialogComponent, {
-    width: '400px',
-    disableClose: true
-  });
+  addBR() {
+    const dialogRef = this.dialog.open(AddBrDialogComponent, {
+      width: '400px',
+      disableClose: true
+    });
 
-  dialogRef.afterClosed().subscribe(reference => {
-    if (reference) {
-      const formData = { reference };
+    dialogRef.afterClosed().subscribe(reference => {
+      if (reference) {
+        const formData = { reference };
 
-      this.brsService.addBr(this.bcID, formData).subscribe({
-        next: data => {
-          this.snackbarService.show("BR créé avec succès !");
-          this.brID = data.id;
-          this.router.navigateByUrl(`/user/br-details/${this.brID}`);
-        },
-        error: err => {
-          const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
-          this.snackbarService.show("Erreur: " + errorMessage);
-        }
-      });
-    }
-  });
-}
+        this.brsService.addBr(this.bcID, formData).subscribe({
+          next: data => {
+            this.snackbarService.show("BR créé avec succès !");
+            this.brID = data.id;
+            this.router.navigateByUrl(`/user/br-details/${this.brID}`);
+          },
+          error: err => {
+            const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
+            this.snackbarService.show("Erreur: " + errorMessage);
+          }
+        });
+      }
+    });
+  }
 }
