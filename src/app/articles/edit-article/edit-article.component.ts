@@ -13,7 +13,7 @@ import { ArticlesService } from '../../services/articles.service';
 export class EditArticleComponent implements OnInit{
 
   public updateUserForm !: FormGroup;
-  public articleID! : string;
+  public articleID! : number;
   public articleData! : any;
 
   constructor(private fb : FormBuilder, 

@@ -16,8 +16,9 @@ import { ArticlesService } from '../../services/articles.service';
 })
 export class ViewArticlesComponent implements OnInit{
 
+
   public displayedColumns = ["reference", "designation", "family", "type", "longueur","action"];
- public dataSource : any;
+  public dataSource : any;
 
   public users : any;
 
@@ -70,6 +71,9 @@ export class ViewArticlesComponent implements OnInit{
     });
   }
   
+  consultArticle(element: any) {
+    this.router.navigateByUrl(`/user/article-details/${element.id}`)
+  }
 
   onEdit(element: any) {
     this.router.navigateByUrl(`/user/edit-article/${element.id}`)

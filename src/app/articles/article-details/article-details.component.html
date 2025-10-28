@@ -1,1 +1,69 @@
-<p>article-details works!</p>
+<div class="container">
+    <!-- {{paiementDetails | json}} -->
+
+    <div class="full-title">
+        <!-- <button mat-fab aria-label="Example icon button with a delete icon" class="back-icon" (click)="goBack()">
+            <mat-icon>arrow_back</mat-icon>
+        </button> -->
+        <div class="title">
+            <mat-icon>article</mat-icon>
+            <h2>Article {{articleData?.reference}}</h2>
+        </div>
+    </div>
+    <!-- <mat-divider></mat-divider> -->
+    
+
+    <div class="payment-details-card">
+      
+                <div>
+                    <div>
+                        <span class="key">Reference: </span>
+                        <span class="value">{{articleData?.reference}}</span>
+                    </div>
+                    <div>
+                        <span class="key">designation: </span>
+                        <span class="value">{{articleData?.designation}}</span>
+                    </div>
+                    <div>
+                        <span class="key">family: </span>
+                        <span class="value">{{articleData?.family}}</span>
+                    </div>
+                    <div *ngIf="articleData.longueur">
+                        <span class="key">longueur: </span>
+                        <span class="value">{{articleData?.longueur}}</span>
+                    </div>
+                    <div>
+                        <span class="key">type: </span>
+                        <span class="value">{{articleData?.type}}</span>
+                    </div>
+                </div>
+
+        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+            <ng-container matColumnDef="colorName">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef> Couleur </th>
+                <td mat-cell *matCellDef="let element"> {{element.colorName}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="prixUnitaireHT">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef> Prix UnitaireHT </th>
+                <td mat-cell *matCellDef="let element"> {{element.prixUnitaireHT}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="prixTotalHT">
+                <th mat-header-cell mat-sort-header *matHeaderCellDef> Prix Total HT </th>
+                <td mat-cell *matCellDef="let element"> {{element.prixTotalHT}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+         
+        </table>
+        
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                        showFirstLastButtons
+                        aria-label="Select page of periodic elements"
+                        class="paginator">
+        </mat-paginator>
+                
+    </div>
+</div>
