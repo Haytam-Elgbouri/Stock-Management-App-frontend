@@ -53,6 +53,7 @@ import { AddBrDialogComponent } from './add-br-dialog/add-br-dialog.component';
 import { ViewColorsComponent } from './colors/view-colors/view-colors.component';
 import { AddColorDialogComponent } from './colors/add-color-dialog/add-color-dialog.component';
 import { AddColorPriceDialogComponent } from './articles/add-color-price-dialog/add-color-price-dialog.component';
+import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +73,7 @@ import { AddColorPriceDialogComponent } from './articles/add-color-price-dialog/
     ViewColorsComponent,
     AddColorDialogComponent,
     AddColorPriceDialogComponent,
+    ArticleDetailsComponent,
   ],
   imports: [
     BrowserModule,

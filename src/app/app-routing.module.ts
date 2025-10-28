@@ -11,6 +11,7 @@ import { ViewStockComponent } from './stock/view-stock/view-stock.component';
 import { ViewBrsComponent } from './BRs/view-brs/view-brs.component';
 import { BrDetailsComponent } from './BRs/br-details/br-details.component';
 import { ViewColorsComponent } from './colors/view-colors/view-colors.component';
+import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'user/view-stock', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
       // { path: '', redirectTo: '/user/view-stock', pathMatch: 'full' },
       {path : "view-stock", component : ViewStockComponent},
       {path : "view-articles", component : ViewArticlesComponent},
+      {path : "article-details/:id", component : ArticleDetailsComponent},
       {path : "edit-article/:id", component : EditArticleComponent},
       {path : "add-article", component : AddArticlesComponent},
       {path : "view-bcs", component : ViewBCsComponent},

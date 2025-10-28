@@ -71,11 +71,18 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="w-40">
+      <mat-form-field appearance="outline" class="w-40" *ngIf="addUserForm.get('family')?.value == 1">
         <mat-label>
-          {{ addUserForm.get('family')?.value == 1 ? 'Prix Unitaire HT' : 'Prix Total HT' }}
+          Prix Unitaire HT
         </mat-label>
         <input matInput type="number" formControlName="prixUnitaireHT" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-40" *ngIf="addUserForm.get('family')?.value != 1">
+        <mat-label>
+          Prix Unitaire HT
+        </mat-label>
+        <input matInput type="number" formControlName="prixTotalHT" />
       </mat-form-field>
 
       <button mat-icon-button color="warn" type="button" (click)="removeColorPrice(i)">
