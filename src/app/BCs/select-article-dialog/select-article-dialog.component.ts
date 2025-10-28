@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Article } from '../models/articles.model';
-import { ArticlesService } from '../services/articles.service';
+import { Article } from '../../models/articles.model';
+import { ArticlesService } from '../../services/articles.service';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({

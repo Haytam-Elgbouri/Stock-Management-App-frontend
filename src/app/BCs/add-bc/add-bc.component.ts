@@ -8,7 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Article } from '../../models/articles.model';
-import { SelectArticleDialogComponent } from '../../select-article-dialog/select-article-dialog.component';
+import { SelectArticleDialogComponent } from '../select-article-dialog/select-article-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({

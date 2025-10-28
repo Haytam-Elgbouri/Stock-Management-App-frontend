@@ -46,7 +46,7 @@ import { ViewBCsComponent } from './BCs/view-bcs/view-bcs.component';
 import { AddBCComponent } from './BCs/add-bc/add-bc.component';
 import { BcDetailsComponent } from './BCs/bc-details/bc-details.component';
 import { ViewStockComponent } from './stock/view-stock/view-stock.component';
-import { SelectArticleDialogComponent } from './select-article-dialog/select-article-dialog.component';
+import { SelectArticleDialogComponent } from './BCs/select-article-dialog/select-article-dialog.component';
 import { ViewBrsComponent } from './BRs/view-brs/view-brs.component';
 import { BrDetailsComponent } from './BRs/br-details/br-details.component';
 import { AddBrDialogComponent } from './add-br-dialog/add-br-dialog.component';
