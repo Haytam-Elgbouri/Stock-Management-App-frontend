@@ -151,15 +151,15 @@ async downloadBC() {
   const logoBase64 = await getBase64ImageFromURL(logoUrl).catch(() => null);
 
   if (logoBase64) {
-    doc.addImage(logoBase64, 'PNG', 10, 10, 30, 30); // (x, y, width, height)
+    doc.addImage(logoBase64, 'PNG', 10, 10, 100, 30); // (x, y, width, height)
   }
 
-  doc.setFontSize(10);
-  doc.text(`Casablanca, le ${date}`, 140, 20);
+  doc.setFontSize(12);
+  doc.text(`Casablanca, le ${date}`, 130, 60);
 
   doc.setFontSize(16);
   doc.setFont('helvetica', 'bold');
-  doc.text(`BON DE COMMANDE ${reference}`, 10, 60);
+  doc.text(`BON DE COMMANDE ${reference}`, 10, 120);
 
   const tableData = this.lines.map((line: any) => {
     const isBarre = line.article.family === 'BARRE';
@@ -175,7 +175,7 @@ async downloadBC() {
   autoTable(doc, {
     head: [['Référence', 'Désignation', 'Quantité', 'Longueur', 'Couleur']],
     body: tableData,
-    startY: 70,
+    startY: 130,
     theme: 'grid',
     headStyles: { fillColor: [242, 242, 242], textColor: 0 },
     styles: { fontSize: 10, halign: 'center' },
@@ -187,7 +187,7 @@ E-mail: scaluxsarl@gmail.com - RC. N° 560169 - IF. N° 53219907 - ICE: 00314879
   const pageHeight = doc.internal.pageSize.height;
   doc.setTextColor(255, 140, 0); // Orange
   doc.setFontSize(9);
-  doc.text(footerText, doc.internal.pageSize.width / 2, pageHeight - 20, {
+  doc.text(footerText, doc.internal.pageSize.width / 2, pageHeight - 25, {
     align: 'center',
   });
 
