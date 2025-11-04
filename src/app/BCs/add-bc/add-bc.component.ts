@@ -25,7 +25,7 @@ export class AddBCComponent implements OnInit{
 
   public articles!:any;
   public displayedColumns: string[] = [
-    'id', 'reference', 'designation', 'family', 'type', 'prixUnitaireHT',
+    'reference', 'designation', 'family', 'type', 'prixUnitaireHT',
     'color', 'quantity'
   ];
 

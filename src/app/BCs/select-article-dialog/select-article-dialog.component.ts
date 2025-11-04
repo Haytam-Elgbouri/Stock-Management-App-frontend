@@ -53,7 +53,7 @@ export class SelectArticleDialogComponent implements OnInit {
   onSelectArticle(articleId: number) {
     this.articleForm.get('selected')?.setValue(articleId);
     
-    // ⬅️ Load colors for selected article
+    // Load colors for selected article
     const selectedArticle = this.articles.find(a => a.id === articleId);
     if (selectedArticle && selectedArticle.colorPrices) {
       this.availableColors = selectedArticle.colorPrices.map((cp: any) => ({

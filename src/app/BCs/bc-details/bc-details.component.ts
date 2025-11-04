@@ -127,7 +127,7 @@ export class BcDetailsComponent implements OnInit{
 
 async downloadBC() {
   const doc = new jsPDF();
-  const logoUrl = 'logo-white2.png';
+  const logoUrl = 'scalux.png';
   const date = this.bcs?.date || '';
   const reference = this.bcs?.reference || '';
 
@@ -151,9 +151,14 @@ async downloadBC() {
   const logoBase64 = await getBase64ImageFromURL(logoUrl).catch(() => null);
 
   if (logoBase64) {
-    doc.addImage(logoBase64, 'PNG', 10, 10, 100, 30); // (x, y, width, height)
+    doc.addImage(logoBase64, 'PNG', 10, 10, 24, 20); // (x, y, width, height)
   }
 
+  doc.setFontSize(30);
+  doc.setTextColor(255, 140, 0);
+  doc.text(`SCALUX`, 35, 27);
+
+  doc.setTextColor(0, 0, 0);
   doc.setFontSize(12);
   doc.text(`Casablanca, le ${date}`, 130, 60);
 
@@ -166,19 +171,20 @@ async downloadBC() {
     return [
       line.article.reference || '',
       line.article.designation || '',
+      isBarre ? 'BARRE' : (line.article.type || ''), 
       line.quantity || '',
-      isBarre ? (line.article.longueur || '') : '-',
+      // isBarre ? (line.article.longueur || '') : '-',
       line.color?.name || '',
     ];
   });
 
   autoTable(doc, {
-    head: [['Référence', 'Désignation', 'Quantité', 'Longueur', 'Couleur']],
+    head: [['Référence', 'Désignation', 'Unité', 'Quantité', 'Couleur']],
     body: tableData,
     startY: 130,
     theme: 'grid',
     headStyles: { fillColor: [242, 242, 242], textColor: 0 },
-    styles: { fontSize: 10, halign: 'center' },
+    styles: { fontSize: 10, halign: 'left' },
   });
 
   const footerText = `Siege Maga. 186 Bd Chefchaouni Q. I. Bernoussi CASABLANCA. Tel: +212 522 351447
@@ -187,7 +193,7 @@ E-mail: scaluxsarl@gmail.com - RC. N° 560169 - IF. N° 53219907 - ICE: 00314879
   const pageHeight = doc.internal.pageSize.height;
   doc.setTextColor(255, 140, 0); // Orange
   doc.setFontSize(9);
-  doc.text(footerText, doc.internal.pageSize.width / 2, pageHeight - 25, {
+  doc.text(footerText, doc.internal.pageSize.width / 2, pageHeight - 10, {
     align: 'center',
   });
 
