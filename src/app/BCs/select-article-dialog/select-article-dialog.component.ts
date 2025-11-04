@@ -17,19 +17,18 @@ export class SelectArticleDialogComponent implements OnInit {
   availableColors: any[] = []; // ⬅️ Colors for selected article
   articles: any[] = [];
   dataSource: MatTableDataSource<any>;
-  displayedColumns: string[] = ['select', 'reference', 'designation', 'family', 'type', 'prixUnitaireHT'];
+  displayedColumns: string[] = ['select', 'reference', 'designation', 'family', 'type'];
 
   selectedArticleId: number | null = null;
 
   constructor(
     private fb: FormBuilder,
     private articlesService: ArticlesService,
-    // Remove colorService - not needed anymore
     public dialogRef: MatDialogRef<SelectArticleDialogComponent>
   ) {
     this.articleForm = this.fb.group({
       quantity: [1, [Validators.required, Validators.min(1)]],
-      color: ['', Validators.required], // ⬅️ Added back validator
+      color: ['', Validators.required],
       selected: ['', Validators.required]
     });
 
@@ -73,10 +72,20 @@ export class SelectArticleDialogComponent implements OnInit {
     const selectedArticle = this.articles.find(a => a.id === selectedArticleId);
     if (!selectedArticle) return;
 
+    // Find the selected color's price information
+    const selectedColorId = this.articleForm.value.color;
+    const selectedColorPrice = selectedArticle.colorPrices?.find(
+      (cp: any) => cp.colorName === selectedColorId
+    );
+    const prixTotalHT = selectedColorPrice?.prixTotalHT * this.articleForm.value.quantity;
+    
     const result = {
       ...selectedArticle,
       quantity: this.articleForm.value.quantity,
-      color: this.articleForm.value.color
+      color: selectedColorId,
+      colorName: selectedColorPrice?.colorName,
+      // prixTotalHT: selectedColorPrice?.prixTotalHT || 0
+      prixTotalHT: prixTotalHT
     };
 
     this.dialogRef.close(result);
