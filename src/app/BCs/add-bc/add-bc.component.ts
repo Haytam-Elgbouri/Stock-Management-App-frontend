@@ -22,11 +22,11 @@ export class AddBCComponent implements OnInit{
   public bcForm! : FormGroup; 
   public dataSource = new MatTableDataSource<any>();
   public addedArticles: any[] = []; // your custom list
-
+test:any
   public articles!:any;
   public displayedColumns: string[] = [
-    'reference', 'designation', 'family', 'type', 'prixUnitaireHT',
-    'color', 'quantity'
+    'reference', 'designation', 'family', 'type',
+    'color', 'quantity', 'prixUnitaireHT'
   ];
 
   constructor(private fb : FormBuilder ,
@@ -45,69 +45,69 @@ export class AddBCComponent implements OnInit{
     supplierReference: this.fb.control('', Validators.required),
   });
 
-}
-
-openAddArticleDialog(): void {
-  const dialogRef = this.dialog.open(SelectArticleDialogComponent, {
-    width: '70vw',    // 70% of the viewport width
-    height: '70vh',   // 70% of the viewport height (optional)
-    maxWidth: '95vw', // prevent overflow on small screens
-    maxHeight: '95vh',
-    data: { articles: this.articles }
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-  if (result) {
-    const existingLine = this.addedArticles.find(
-      a => a.id === result.id && a.color === result.color
-    );
-
-    if (existingLine) {
-      existingLine.quantity += result.quantity;
-    } else {
-      this.addedArticles.push(result);
-    }
-
-    this.dataSource.data = [...this.addedArticles];
   }
-});
-}
 
+  openAddArticleDialog(): void {
+    const dialogRef = this.dialog.open(SelectArticleDialogComponent, {
+      width: '70vw',    // 70% of the viewport width
+      height: '70vh',   // 70% of the viewport height (optional)
+      maxWidth: '95vw', // prevent overflow on small screens
+      maxHeight: '95vh',
+      data: { articles: this.articles }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      this.test=result
+    if (result) {
+      const existingLine = this.addedArticles.find(
+        a => a.id === result.id && a.color === result.color
+      );
 
+      if (existingLine) {
+        existingLine.quantity += result.quantity;
+      } else {
+        this.addedArticles.push(result);
+      }
 
-confirm() {
-  const formData = {
-    reference: this.bcForm.value.reference,
-    supplierReference: this.bcForm.value.supplierReference,
-    lines: this.addedArticles.map(a => ({
-      article: { id: a.id },
-      quantity: a.quantity,
-      color: { id: a.color } // ⬅️ Changed from a.color to { id: a.color }
-    }))
-  };
-
-  this.bcsService.addBC(formData).subscribe({
-    next: () => {
-      this.snackbarService.show('Bon de commande enregistré avec succès');
-
-      // Reset form
-      this.bcForm.reset();
-
-      // Clear added articles and table
-      this.addedArticles = [];
-      this.dataSource.data = [];
-
-      if (this.paginator) this.paginator.firstPage();
-
-    },
-    error: err => {
-      const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
-      this.snackbarService.show("Erreur: " + errorMessage);
+      this.dataSource.data = [...this.addedArticles];
     }
   });
-}
+  }
 
+
+
+
+  confirm() {
+    const formData = {
+      reference: this.bcForm.value.reference,
+      supplierReference: this.bcForm.value.supplierReference,
+      lines: this.addedArticles.map(a => ({
+        article: { id: a.id },
+        quantity: a.quantity,
+        color: { id: a.color }
+      }))
+    };
+
+    this.bcsService.addBC(formData).subscribe({
+      next: () => {
+        this.snackbarService.show('Bon de commande enregistré avec succès');
+
+        // Reset form
+        this.bcForm.reset();
+
+        // Clear added articles and table
+        this.addedArticles = [];
+        this.dataSource.data = [];
+
+        if (this.paginator) this.paginator.firstPage();
+
+      },
+      error: err => {
+        const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
+        this.snackbarService.show("Erreur: " + errorMessage);
+      }
+    });
+  }
 
 
 }

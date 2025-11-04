@@ -75,7 +75,7 @@ export class SelectArticleDialogComponent implements OnInit {
     // Find the selected color's price information
     const selectedColorId = this.articleForm.value.color;
     const selectedColorPrice = selectedArticle.colorPrices?.find(
-      (cp: any) => cp.colorName === selectedColorId
+      (cp: any) => cp.colorId === selectedColorId
     );
     const prixTotalHT = selectedColorPrice?.prixTotalHT * this.articleForm.value.quantity;
     

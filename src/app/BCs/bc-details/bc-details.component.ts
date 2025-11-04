@@ -183,9 +183,20 @@ async downloadBC() {
     body: tableData,
     startY: 130,
     theme: 'grid',
-    headStyles: { fillColor: [242, 242, 242], textColor: 0 },
-    styles: { fontSize: 10, halign: 'left' },
+    headStyles: {
+      fillColor: [242, 242, 242],
+      textColor: [0, 0, 0],
+      lineColor: [0, 0, 0], // ✅ black border
+      lineWidth: 0.3,       // ✅ thicker border
+    },
+    styles: {
+      fontSize: 10,
+      halign: 'left',
+      lineColor: [0, 0, 0], // ✅ apply border color to all cells
+      lineWidth: 0.2,       // ✅ apply visible border thickness to body
+    },
   });
+
 
   const footerText = `Siege Maga. 186 Bd Chefchaouni Q. I. Bernoussi CASABLANCA. Tel: +212 522 351447
 E-mail: scaluxsarl@gmail.com - RC. N° 560169 - IF. N° 53219907 - ICE: 003148791000039 - CNSS: 5063436`;

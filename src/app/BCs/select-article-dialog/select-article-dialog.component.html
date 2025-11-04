@@ -66,7 +66,7 @@
     <mat-form-field appearance="outline" style="width: 100%;">
       <mat-label>Couleur</mat-label>
       <mat-select formControlName="color" [disabled]="!availableColors.length">
-        <mat-option *ngFor="let color of availableColors" [value]="color.name">
+        <mat-option *ngFor="let color of availableColors" [value]="color.id">
           {{ color.name }}
         </mat-option>
       </mat-select>
