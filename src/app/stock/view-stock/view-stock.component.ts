@@ -16,7 +16,7 @@ import { StockService } from '../../services/stock.service';
   styleUrl: './view-stock.component.css'
 })
 export class ViewStockComponent implements OnInit{
- public displayedColumns = ["reference", "designation", "family", "type","color","prixUnitaireHT", "quantity"];
+ public displayedColumns = ["reference", "designation", "family", "type","color","prixUnitaireHT", "quantity", "prixTotalHT"];
  public dataSource : any;
 
   public users : any;

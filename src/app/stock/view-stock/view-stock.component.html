@@ -51,6 +51,11 @@
             <th mat-header-cell mat-sort-header *matHeaderCellDef> Quantité </th>
             <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
         </ng-container>
+    
+        <ng-container matColumnDef="prixTotalHT">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef> Prix Total HT </th>
+            <td mat-cell *matCellDef="let element"> {{element.prixLineStock}} </td>
+        </ng-container>
 
 
        
