@@ -1,0 +1,50 @@
+.add-icon{
+    margin: 3% 0%;
+}
+
+.edit-icon{
+    margin: 10% 3%;
+    
+}
+
+.delete-icon{
+    margin: 3% 2%;
+    
+}
+
+button{
+    color: #161a2e;
+    height: 50px;
+    width: 50px;
+    box-shadow: none;
+}
+
+.selected-button-active{
+    background-color: #588157;
+    color: var(--primary-color);
+}
+
+.selected-button-inactive{
+    background-color: #bd1e1e;
+    color: var(--primary-color);
+
+}
+
+
+
+.change-status-icons button{
+    margin: 0% 3%;
+}
+
+
+
+
+.search-icon{
+    transform: scale(1.2);
+}
+
+.icons-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -22,7 +22,6 @@ export class AddBCComponent implements OnInit{
   public bcForm! : FormGroup; 
   public dataSource = new MatTableDataSource<any>();
   public addedArticles: any[] = []; // your custom list
-test:any
   public articles!:any;
   public displayedColumns: string[] = [
     'reference', 'designation', 'family', 'type',
@@ -57,7 +56,6 @@ test:any
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.test=result
     if (result) {
       const existingLine = this.addedArticles.find(
         a => a.id === result.id && a.color === result.color

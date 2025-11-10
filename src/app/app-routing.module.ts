@@ -33,8 +33,8 @@ const routes: Routes = [
       {path : "br-details/:id", component : BrDetailsComponent},
       {path : "view-colors", component : ViewColorsComponent},
       {path : "view-client-bcs", component : ViewBcClientComponent},
-      {path : "add-client-bcs", component : AddBcClientComponent},
-      {path : "client-bcs-details", component : BcClientDetailsComponent},
+      {path : "add-client-bc", component : AddBcClientComponent},
+      {path : "client-bc-details/:id", component : BcClientDetailsComponent},
     ]
   }
  

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -14,7 +14,7 @@ import { BcsService } from '../../services/bcs.service';
   templateUrl: './view-bcs.component.html',
   styleUrl: './view-bcs.component.css'
 })
-export class ViewBCsComponent {
+export class ViewBCsComponent implements OnInit{
 
   public displayedColumns = ['reference','date','supplierReference','prixTotalHT','action'];
   public dataSource:any;
