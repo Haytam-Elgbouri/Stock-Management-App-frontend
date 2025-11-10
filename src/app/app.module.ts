@@ -54,6 +54,9 @@ import { ViewColorsComponent } from './colors/view-colors/view-colors.component'
 import { AddColorDialogComponent } from './colors/add-color-dialog/add-color-dialog.component';
 import { AddColorPriceDialogComponent } from './articles/add-color-price-dialog/add-color-price-dialog.component';
 import { ArticleDetailsComponent } from './articles/article-details/article-details.component';
+import { ViewBcClientComponent } from './BC-Client/view-bc-client/view-bc-client.component';
+import { AddBcClientComponent } from './BC-Client/add-bc-client/add-bc-client.component';
+import { BcClientDetailsComponent } from './BC-Client/bc-client-details/bc-client-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +77,9 @@ import { ArticleDetailsComponent } from './articles/article-details/article-deta
     AddColorDialogComponent,
     AddColorPriceDialogComponent,
     ArticleDetailsComponent,
+    ViewBcClientComponent,
+    AddBcClientComponent,
+    BcClientDetailsComponent,
   ],
   imports: [
     BrowserModule,
