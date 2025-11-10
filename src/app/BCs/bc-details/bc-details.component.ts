@@ -69,26 +69,6 @@ export class BcDetailsComponent implements OnInit{
     })
   }
 
-  // ⬇️ ADD THESE TWO HELPER METHODS
-  getColorPrice(element: any): number {
-    // Find the colorPrice that matches the element's color.id
-    const colorPrice = element.article.colorPrices?.find(
-      (cp: any) => cp.colorId === element.color.id
-    );
-    
-    return colorPrice?.prixTotalHT || 0;
-  }
-
-  getColorTotalPrice(element: any): number {
-    // Find the colorPrice that matches the element's color.id
-    const colorPrice = element.article.colorPrices?.find(
-      (cp: any) => cp.colorId === element.color.id
-    );
-    
-    return colorPrice?.prixTotalHT || 0;
-  }
-  // ⬆️ END OF NEW METHODS
-
   goBack() {
     this.router.navigateByUrl('/user/view-bcs');
   }
