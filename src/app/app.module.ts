@@ -47,7 +47,6 @@ import { AddBCComponent } from './BCs/add-bc/add-bc.component';
 import { BcDetailsComponent } from './BCs/bc-details/bc-details.component';
 import { ViewStockComponent } from './stock/view-stock/view-stock.component';
 import { SelectArticleDialogComponent } from './BCs/select-article-dialog/select-article-dialog.component';
-import { ViewBrsComponent } from './BRs/view-brs/view-brs.component';
 import { BrDetailsComponent } from './BRs/br-details/br-details.component';
 import { AddBrDialogComponent } from './add-br-dialog/add-br-dialog.component';
 import { ViewColorsComponent } from './colors/view-colors/view-colors.component';
@@ -57,6 +56,7 @@ import { ArticleDetailsComponent } from './articles/article-details/article-deta
 import { ViewBcClientComponent } from './BC-Client/view-bc-client/view-bc-client.component';
 import { AddBcClientComponent } from './BC-Client/add-bc-client/add-bc-client.component';
 import { BcClientDetailsComponent } from './BC-Client/bc-client-details/bc-client-details.component';
+import { BlDetailsComponent } from './BLs/bl-details/bl-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +70,6 @@ import { BcClientDetailsComponent } from './BC-Client/bc-client-details/bc-clien
     BcDetailsComponent,
     ViewStockComponent,
     SelectArticleDialogComponent,
-    ViewBrsComponent,
     BrDetailsComponent,
     AddBrDialogComponent,
     ViewColorsComponent,
@@ -80,6 +79,7 @@ import { BcClientDetailsComponent } from './BC-Client/bc-client-details/bc-clien
     ViewBcClientComponent,
     AddBcClientComponent,
     BcClientDetailsComponent,
+    BlDetailsComponent,
   ],
   imports: [
     BrowserModule,

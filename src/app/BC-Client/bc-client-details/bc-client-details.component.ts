@@ -11,6 +11,7 @@ import { BcsService } from '../../services/bcs.service';
 import { BrsService } from '../../services/brs.service';
 import { SnackbarService } from '../../services/snackbar.service';
 import { ClientBcService } from '../../services/client-bc.service';
+import { BlsService } from '../../services/bls.service';
 
 @Component({
   selector: 'app-bc-client-details',
@@ -23,24 +24,26 @@ export class BcClientDetailsComponent implements OnInit{
   constructor(private router : Router,
               private clientBcService : ClientBcService,
               private activatedRoute : ActivatedRoute,
-              private snackbarService : SnackbarService
+              private snackbarService : SnackbarService,
+              private dialog : MatDialog,
+              private blsService : BlsService
             ){}
   public bcs!: any;
   public dataSource:any;
   public displayedColumns = ['reference', 'designation', 'prixUnitaireHT','quantity', 'prixTotalLigne','color','delivered','remaining'];
-  // public brsDataSource:any;
-  // public brsBisplayedColumns = ['reference', 'date', 'status', 'action'];
+  public blsDataSource:any;
+  public blsBisplayedColumns = ['reference', 'date', 'status', 'action'];
   public clientBcID!:number;
-  // public brID!:number;
+  public blID!:number;
   public lines!:[];
-  // public brs!:[];
-  // public brsLength! : number;
+  public bls!:[];
+  public blsLength! : number;
 
   @ViewChild(MatPaginator) bcPaginator! : MatPaginator;
   @ViewChild(MatSort) bcSort!: MatSort;
 
-  @ViewChild(MatPaginator) brPaginator! : MatPaginator;
-  @ViewChild(MatSort) brSort!: MatSort;
+  @ViewChild(MatPaginator) blPaginator! : MatPaginator;
+  @ViewChild(MatSort) blSort!: MatSort;
 
   ngOnInit(): void {
     this.clientBcID = this.activatedRoute.snapshot.params['id'];
@@ -48,16 +51,16 @@ export class BcClientDetailsComponent implements OnInit{
       next : data =>{
           this.bcs = data
           this.lines = this.bcs.lines;
-          // this.brs = this.bcs.brs;
-          // this.brsLength = this.brs.length;
+          this.bls = this.bcs.bls;
+          this.blsLength = this.bls.length;
           
           this.dataSource = new MatTableDataSource(this.lines);
           this.dataSource.paginator = this.bcPaginator;
           this.dataSource.sort = this.bcSort;
 
-          // this.brsDataSource = new MatTableDataSource(this.brs);
-          // this.brsDataSource.paginator = this.brPaginator;
-          // this.brsDataSource.sort = this.brSort;
+          this.blsDataSource = new MatTableDataSource(this.bls);
+          this.blsDataSource.paginator = this.blPaginator;
+          this.blsDataSource.sort = this.blSort;
       },
       error : err =>{
           const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
@@ -69,5 +72,36 @@ export class BcClientDetailsComponent implements OnInit{
   goBack() {
     this.router.navigateByUrl('/user/view-client-bcs');
   }
+
+  
+  consultBL(element: any) {
+    this.router.navigateByUrl(`/user/bl-details/${element.id}`)
+  }
+
+  addBL() {
+    const dialogRef = this.dialog.open(AddBrDialogComponent, {
+      width: '400px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(reference => {
+      if (reference) {
+        const formData = { reference };
+
+        this.blsService.addBl(this.clientBcID, formData).subscribe({
+          next: data => {
+            this.snackbarService.show("BR créé avec succès !");
+            this.blID = data.id;
+            this.router.navigateByUrl(`/user/bl-details/${this.blID}`);
+          },
+          error: err => {
+            const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
+            this.snackbarService.show("Erreur: " + errorMessage);
+          }
+        });
+      }
+    });
+  }
+
 
 }

@@ -10,7 +10,7 @@ export class BrsService {
 
   constructor(private http : HttpClient) { }
 
-  public addBr(id:number ,formData:any):Observable<any>{
+  public addBr(id:number, formData:any):Observable<any>{
     return this.http.post<any>(`${environment.backendHost}/api/brs/${id}`, formData);
   }
 

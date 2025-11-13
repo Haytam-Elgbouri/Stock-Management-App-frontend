@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewBrsComponent } from './view-brs.component';
+import { BlDetailsComponent } from './bl-details.component';
 
-describe('ViewBrsComponent', () => {
-  let component: ViewBrsComponent;
-  let fixture: ComponentFixture<ViewBrsComponent>;
+describe('BlDetailsComponent', () => {
+  let component: BlDetailsComponent;
+  let fixture: ComponentFixture<BlDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ViewBrsComponent]
+      declarations: [BlDetailsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ViewBrsComponent);
+    fixture = TestBed.createComponent(BlDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
