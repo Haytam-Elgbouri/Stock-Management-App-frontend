@@ -48,6 +48,46 @@ export class BlDetailsComponent implements OnInit{
     })
   }
 
+
+  deliver() {
+    if (!this.lines || this.lines.length === 0) return;
+
+    // Prepare the payload for the whole BR
+    const formData = {
+      blId: this.blID,
+      lines: this.lines.map((line: any) => ({
+        id: line.id,
+        deliveredQuantity: line.deliveredQuantity || 0 // default 0 if undefined
+      }))
+    };
+
+    console.log('Delivering BL:', formData);
+
+    this.blService.deliverBL(formData).subscribe({
+      next: () => {
+        this.snackbarService.show("BL Delivered");
+        this.ngOnInit(); // Refresh the data
+      },
+      error: err => {
+        const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
+        this.snackbarService.show("Erreur: " + errorMessage);
+      }
+    });
+  }
+
+  validate(){
+    this.blService.validate(this.blID).subscribe({
+      next : () =>{
+        this.snackbarService.show("BL valide");
+      },
+      error : err =>{
+        const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
+        this.snackbarService.show("Erreur: " + errorMessage);
+      }
+    })
+  }
+
+
   goBack() {
     this.location.back();
   }

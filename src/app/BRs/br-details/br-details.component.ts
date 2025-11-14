@@ -47,7 +47,7 @@ export class BrDetailsComponent implements OnInit{
     })
   }
 
-deliver() {
+receive() {
   if (!this.lines || this.lines.length === 0) return;
 
   // Prepare the payload for the whole BR
