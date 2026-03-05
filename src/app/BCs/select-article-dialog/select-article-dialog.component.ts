@@ -57,7 +57,8 @@ export class SelectArticleDialogComponent implements OnInit {
     if (selectedArticle && selectedArticle.colorPrices) {
       this.availableColors = selectedArticle.colorPrices.map((cp: any) => ({
         id: cp.colorId,
-        name: cp.colorName
+        name: cp.colorName,
+        prixTotalHT: cp.prixTotalHT
       }));
       
       // Reset color selection when article changes

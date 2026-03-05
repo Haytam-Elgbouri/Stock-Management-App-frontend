@@ -67,7 +67,7 @@
       <mat-label>Couleur</mat-label>
       <mat-select formControlName="color" [disabled]="!availableColors.length">
         <mat-option *ngFor="let color of availableColors" [value]="color.id">
-          {{ color.name }}
+          {{ color.name }} - {{ color.prixTotalHT }} DHS
         </mat-option>
       </mat-select>
       <mat-hint *ngIf="!availableColors.length">Sélectionnez d'abord un article</mat-hint>

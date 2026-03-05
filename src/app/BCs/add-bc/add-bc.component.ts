@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { Article } from '../../models/articles.model';
 import { SelectArticleDialogComponent } from '../select-article-dialog/select-article-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-bc',
@@ -31,7 +32,8 @@ export class AddBCComponent implements OnInit{
   constructor(private fb : FormBuilder ,
               private bcsService : BcsService,
               private snackbarService : SnackbarService,
-              private dialog: MatDialog){}
+              private dialog: MatDialog,
+              private router: Router){}
 
 
   @ViewChild(MatPaginator) paginator! : MatPaginator;
@@ -98,13 +100,15 @@ export class AddBCComponent implements OnInit{
         this.dataSource.data = [];
 
         if (this.paginator) this.paginator.firstPage();
-
+        
+        this.router.navigateByUrl("/user/view-bcs");
       },
       error: err => {
         const errorMessage = err?.error?.message || "Une erreur inattendue s'est produite";
         this.snackbarService.show("Erreur: " + errorMessage);
       }
     });
+    
   }
 
 
